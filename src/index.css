@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+
+
+/* Default slide (left & right) */
+.swiper-slide .slide-image {
+  height: 300px;
+  transform: scale(0.70);
+  opacity: 0.5;
+  transition:
+    transform 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.7s ease-in,
+    height 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active center slide */
+.swiper-slide-active .slide-image {
+  height: 567px;
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+
+/* marquee.css */
+
+.marquee-wrapper {
+  position: absolute;
+  bottom: 50px;
+  right: 5%;
+  width: 50%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-track img {
+  width: 220px;
+  margin-right: 24px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* Animation */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
