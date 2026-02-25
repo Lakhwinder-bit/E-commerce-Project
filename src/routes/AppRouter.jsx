@@ -5,12 +5,16 @@ import About  from "../pages/about";
 import { Product } from "../pages/product";
 import { LikePage } from "../pages/likePage";
 import { Sale } from "../pages/sale";
+import ManTshirt from "../pages/mantshirt";
+import GirlTshirt from "../pages/girltshirt";
 
 
 function AppRoutes() {
   return (
     <Routes>
          <Route element={<MainLayout />}>
+         <Route path="/man-tshirt" element={<ManTshirt />}/>
+         <Route path="/girl-tshirt" element={<GirlTshirt/>}/>
          
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />

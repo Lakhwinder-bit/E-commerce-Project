@@ -13,9 +13,10 @@ function Home() {
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <Link to="/" className="hover:text-gray-600">New Arrivals</Link>
-          <Link to="/men" className="hover:text-gray-600">Men</Link>
-          <Link to="/women" className="hover:text-gray-600">Women</Link>
+          <Link to="/" className="hover:text-gray-600">Home</Link>
+          <Link to="/about" className="hover:text-gray-600">Products</Link>
+          <Link to="/man-tshirt" className="hover:text-gray-600">Men</Link>
+          <Link to="/girl-tshirt" className="hover:text-gray-600">Women</Link>
           <Link to="/sale" className="hover:text-gray-600">Sale</Link>
         </nav>
 
