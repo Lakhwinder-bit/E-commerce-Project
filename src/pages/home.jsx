@@ -1,5 +1,9 @@
 import React from "react";
 import HomeSlider from "../components/heroSlider";
+import CategorieCard from "../components/categorieCard";
+import { Categories } from "../data/categories";
+import HighlightCard from "../components/highlightCard";
+import { Highlight } from "../data/highlight";
 import { Heart, MoveRight, ShoppingCartIcon } from "lucide-react";
 export default function homePage() {
   return (
@@ -7,64 +11,23 @@ export default function homePage() {
       <HomeSlider />
       <div className="px-35">
         <div className="flex  justify-between">
-          <h1 className="text-2xl font-semibold">Curated Collections</h1>
+          <h1 className="text-2xl font-semibold">Shop by Category</h1>
           <div className="flex items-center justify-center gap-2 text-lg">
             View All Categories <MoveRight className="pt-1 " />
           </div>
         </div>
         <div className="flex gap-4">
-          <div className="h-full w-[330px]  pt-12">
-            <div className="relative">
-              <img
-                className="rounded-lg bg-cover h-[350px] object-cover brightness-50 "
-                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNsb3RoaW5nfGVufDB8fDB8fHww"
-                alt=""
-              />
-              <div className="absolute bottom-0 p-5">
-                <p className="text-white text-2xl font-bold ">Man</p>
-                <p className="text-white text-2xl font-bold">142 items</p>
-              </div>
-            </div>
-          </div>
-          <div className="h-full w-[330px]  pt-12">
-            <div className="relative">
-              <img
-                className="rounded-lg bg-cover h-[350px] object-cover brightness-50 "
-                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNsb3RoaW5nfGVufDB8fDB8fHww"
-                alt=""
-              />
-              <div className="absolute bottom-0 p-5">
-                <p className="text-white text-2xl font-bold ">Man</p>
-                <p className="text-white text-2xl font-bold">142 items</p>
-              </div>
-            </div>
-          </div>
-          <div className="h-full w-[330px]  pt-12">
-            <div className="relative">
-              <img
-                className="rounded-lg bg-cover h-[350px] object-cover brightness-50 "
-                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNsb3RoaW5nfGVufDB8fDB8fHww"
-                alt=""
-              />
-              <div className="absolute bottom-0 p-5">
-                <p className="text-white text-2xl font-bold ">Man</p>
-                <p className="text-white text-2xl font-bold">142 items</p>
-              </div>
-            </div>
-          </div>
-          <div className="h-full w-[330px]  pt-12">
-            <div className="relative">
-              <img
-                className="rounded-lg bg-cover h-[350px] object-cover brightness-50 "
-                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNsb3RoaW5nfGVufDB8fDB8fHww"
-                alt=""
-              />
-              <div className="absolute bottom-0 p-5">
-                <p className="text-white text-2xl font-bold ">Man</p>
-                <p className="text-white text-2xl font-bold">142 items</p>
-              </div>
-            </div>
-          </div>
+     
+         {
+          Categories.map((items) =>(
+          <CategorieCard
+         key={items.id}
+          item={items}
+
+          />
+          ))
+         }
+  
         </div>
       </div>
 
@@ -82,180 +45,15 @@ export default function homePage() {
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Card 1 */}
-          <div className="bg-white rounded-lg overflow-hidden shadow relative">
-            <div className="relative h-[380px]">
-              <img
-                src="https://images.unsplash.com/photo-1759667642661-97dcfb78e8a6?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                className="w-full h-full object-cover"
-                alt=""
-              />
-              <span className="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">
-                -20% OFF
-              </span>
-            </div>
-
-            <div className="p-2">
-              <div className="flex flex-row-reverse justify-between">
-                <div className="flex flex-col">
-                  <div className="font-bold text-lg">$32.00</div>
-                  <div className="text-sm text-gray-400 line-through leading-[60%]">
-                    $40.00
-                  </div>
-                </div>
-
-                <div className="mt-2">
-                  <h3 className="font-semibold text-lg">Midnight Heavy Tee</h3>
-
-                  <p className="text-sm text-gray-500 mt-3">
-                    The Core Collection
-                  </p>
-                  <div className="flex gap-1 mt-2">
-                  <div className="h-3 w-3 rounded-full bg-amber-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-green-400"></div>
-                  <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute bottom-30 right-4 z-40">
-              <div className="flex flex-col gap-1.5">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center"><Heart className="w-5 h-5"/></div>
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center"><ShoppingCartIcon className="w-5 h-5"/></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-             <div className="bg-white rounded-lg overflow-hidden shadow relative">
-            <div className="relative h-[380px]">
-              <img
-                src="https://images.unsplash.com/photo-1759667642661-97dcfb78e8a6?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                className="w-full h-full object-cover"
-                alt=""
-              />
-              <span className="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">
-                -20% OFF
-              </span>
-            </div>
-
-            <div className="p-2">
-              <div className="flex flex-row-reverse justify-between">
-                <div className="flex flex-col">
-                  <div className="font-bold text-lg">$32.00</div>
-                  <div className="text-sm text-gray-400 line-through leading-[60%]">
-                    $40.00
-                  </div>
-                </div>
-
-                <div className="mt-2">
-                  <h3 className="font-semibold text-lg">Midnight Heavy Tee</h3>
-
-                  <p className="text-sm text-gray-500 mt-3">
-                    The Core Collection
-                  </p>
-                  <div className="flex gap-1 mt-2">
-                  <div className="h-3 w-3 rounded-full bg-amber-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-green-400"></div>
-                  <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute bottom-30 right-4 z-40">
-              <div className="flex flex-col gap-1.5">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center"><Heart className="w-5 h-5"/></div>
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center"><ShoppingCartIcon className="w-5 h-5"/></div>
-              </div>
-            </div>
-          </div>
-
-            {/* Card 3 */}
-             <div className="bg-white rounded-lg overflow-hidden shadow relative">
-            <div className="relative h-[380px]">
-              <img
-                src="https://images.unsplash.com/photo-1759667642661-97dcfb78e8a6?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                className="w-full h-full object-cover"
-                alt=""
-              />
-              <span className="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">
-                -20% OFF
-              </span>
-            </div>
-
-            <div className="p-2">
-              <div className="flex flex-row-reverse justify-between">
-                <div className="flex flex-col">
-                  <div className="font-bold text-lg">$32.00</div>
-                  <div className="text-sm text-gray-400 line-through leading-[60%]">
-                    $40.00
-                  </div>
-                </div>
-
-                <div className="mt-2">
-                  <h3 className="font-semibold text-lg">Midnight Heavy Tee</h3>
-
-                  <p className="text-sm text-gray-500 mt-3">
-                    The Core Collection
-                  </p>
-                  <div className="flex gap-1 mt-2">
-                  <div className="h-3 w-3 rounded-full bg-amber-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-green-400"></div>
-                  <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute bottom-30 right-4 z-40">
-              <div className="flex flex-col gap-1.5">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center"><Heart className="w-5 h-5"/></div>
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center"><ShoppingCartIcon className="w-5 h-5"/></div>
-              </div>
-            </div>
-          </div>
-
-            {/* Card 4 */}
-             <div className="bg-white rounded-lg overflow-hidden shadow relative">
-            <div className="relative h-[380px]">
-              <img
-                src="https://images.unsplash.com/photo-1759667642661-97dcfb78e8a6?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                className="w-full h-full object-cover"
-                alt=""
-              />
-              <span className="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">
-                -20% OFF
-              </span>
-            </div>
-
-            <div className="p-2">
-              <div className="flex flex-row-reverse justify-between">
-                <div className="flex flex-col">
-                  <div className="font-bold text-lg">$32.00</div>
-                  <div className="text-sm text-gray-400 line-through leading-[60%]">
-                    $40.00
-                  </div>
-                </div>
-
-                <div className="mt-2">
-                  <h3 className="font-semibold text-lg">Midnight Heavy Tee</h3>
-
-                  <p className="text-sm text-gray-500 mt-3">
-                    The Core Collection
-                  </p>
-                  <div className="flex gap-1 mt-2">
-                  <div className="h-3 w-3 rounded-full bg-amber-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-green-400"></div>
-                  <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute bottom-30 right-4 z-40">
-              <div className="flex flex-col gap-1.5">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center"><Heart className="w-5 h-5"/></div>
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center"><ShoppingCartIcon className="w-5 h-5"/></div>
-              </div>
-            </div>
-          </div>
+   {
+    Highlight.map((item)=>(
+      <HighlightCard
+      key={item.id}
+      item={item}
+      />
+    ))
+   }
+   
         </div>
       </section>
 
