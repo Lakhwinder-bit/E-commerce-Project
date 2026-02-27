@@ -1,7 +1,7 @@
 import React from "react";
 import HomeSlider from "../components/heroSlider";
 import ProductCard from "../components/productCard";
-import { Product } from "../data/Product.jsx";
+import { Product } from "/src/data/product.jsx";
 import { Heart, MoveRight, ShoppingCartIcon } from "lucide-react";
 export default function homePage() {
   return (
