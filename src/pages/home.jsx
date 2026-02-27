@@ -1,11 +1,7 @@
 import React from "react";
 import HomeSlider from "../components/heroSlider";
-import CategorieCard from "../components/categorieCard";
-import { Categories } from "../data/categories";
 import ProductCard from "../components/productCard";
-import { Product } from "../data/Product";
-import Gym from "../components/gym";
-import { gymWear } from "../data/gym";
+import { Product } from "../data/Product.jsx";
 import { Heart, MoveRight, ShoppingCartIcon } from "lucide-react";
 export default function homePage() {
   return (
@@ -25,24 +21,7 @@ export default function homePage() {
         </div>
       </div>
 
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900">
-            Weekly Highlights
-          </h2>
-          <p className="text-gray-500 mt-3">
-            Handpicked essentials that are defining the current season's trends.
-          </p>
-        </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Card 1 */}
-
-         
-        </div>
-      </section>
 
       <section className="max-w-7xl mx-auto px-6 py-16">
         {/* Header */}
