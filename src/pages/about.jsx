@@ -1,7 +1,7 @@
 import { Heart, HeartIcon } from 'lucide-react'
 import React from 'react'
 import ProductCard from '../components/productCard'
-import { Product } from '../data/Product.jsx'
+import { Product } from '/src/data/product.jsx'
 export default function  About() {
   return (
     <>
