@@ -1,8 +1,15 @@
+
 import { Heart, HeartIcon } from 'lucide-react'
 import React from 'react'
 import ProductCard from '../components/productCard'
 import { Product } from '../data/Product'
-export default function  About() {
+
+export default function Kides() {
+const manProducts = Product.filter(
+  (item) => item.genderCatagory === "kids"
+);
+console.log(manProducts)
+
   return (
     <>
     <section className="max-w-7xl mx-auto px-6 py-10 ">
@@ -15,11 +22,11 @@ export default function  About() {
       </p>
 
       <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-2">
-         All Collections
+       Kids Collection
       </h1>
 
       <p className="text-gray-600 max-w-xl">
-        Explore our complete range of stylish and comfortable clothing for everyone.
+        Soft, comfortable styles perfect for everyday play.
       </p>
     </div>
 
@@ -75,11 +82,11 @@ export default function  About() {
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
     {/* CARD 1 */}
-{Product.map((item) =>(
-      <ProductCard  key={item.id} item={item}
-    />
-  ))}
-
+{
+manProducts.map((item) => (
+  <ProductCard key={item.id} item={item}/>
+))
+}
     
 
   </div>

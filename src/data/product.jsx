@@ -4,6 +4,8 @@ export const Product = [
     title: "Midnight Heavy Tee",
     productName: "Man T-shirt",
     categorie:"man T-shirt",
+    genderCatagory:"Man",
+
     variants: [
       {
         color: "white",
@@ -28,6 +30,7 @@ export const Product = [
     title: "Midnight Heavy Tee",
     productName: "Man short",
      categorie:"gym T-shirt",
+     genderCatagory:"Man",
  
     variants: [
       {
@@ -52,7 +55,8 @@ export const Product = [
 
     title: "kids Heavy Tee",
     productName: "Man short",
-     categorie:"gym T-shirt",
+     categorie:"kide t-shirt",
+     genderCatagory:"kids",
  
     variants: [
       {
@@ -77,7 +81,60 @@ export const Product = [
 
     title: "man Lower",
     productName: "Man short",
+     categorie:"lower",
+     genderCatagory:"Man",
+ 
+    variants: [
+      {
+        color: "white",
+        image:"/images/whitelower.png",
+      },
+      {
+        color: "brown",
+        image: "/images/brownlower.webp",
+      },
+      {
+        color: "black",
+        image: "/images/blacklower.png",
+      },
+    ],
+    discountPrice: 20,
+    price: 32,
+    oldPrice: 40,
+  },
+          {
+    id:5 ,
+
+    title: "man Lower",
+    productName: "Man short",
      categorie:"gym T-shirt",
+     genderCatagory:"Man",
+ 
+    variants: [
+      {
+        color: "white",
+        image:"/images/whitelower.png",
+      },
+      {
+        color: "brown",
+        image: "/images/brownlower.webp",
+      },
+      {
+        color: "black",
+        image: "/images/blacklower.png",
+      },
+    ],
+    discountPrice: 20,
+    price: 32,
+    oldPrice: 40,
+  },
+           {
+    id:6 ,
+
+    title: "man Lower",
+    productName: "Man short",
+     categorie:"gym T-shirt",
+     genderCatagory:"girl",
  
     variants: [
       {

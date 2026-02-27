@@ -1,8 +1,15 @@
 
 import { Heart, HeartIcon } from 'lucide-react'
 import React from 'react'
+import ProductCard from '../components/productCard'
+import { Product } from '../data/Product'
 
 export default function ManTshirt() {
+const manProducts = Product.filter(
+  (item) => item.genderCatagory === "Man"
+);
+console.log(manProducts)
+
   return (
     <>
     <section className="max-w-7xl mx-auto px-6 py-10 ">
@@ -15,11 +22,11 @@ export default function ManTshirt() {
       </p>
 
       <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-2">
-        Oversized Hoodies
+         Men Collection
       </h1>
 
       <p className="text-gray-600 max-w-xl">
-        Heavyweight fleece, clean silhouettes, built for everyday wear.
+         Premium quality Collection designed for everyday comfort and style.
       </p>
     </div>
 
@@ -75,103 +82,11 @@ export default function ManTshirt() {
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
     {/* CARD 1 */}
-    <div className="p-4">
-      <div className="relative rounded-xl overflow-hidden mb-4">
-        <img
-          src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"
-          className="w-full h-[380px] object-cover"
-        />
-
-        <span className="absolute top-3 left-3 bg-red-500 text-white text-xs px-3 py-1 rounded-full">
-          -20%
-        </span>
-
-        <button className="absolute top-3 right-3 bg-white w-9 h-9 rounded-full flex items-center justify-center shadow">
-          <HeartIcon className='w-5 h-5'/>
-        </button>
-      </div>
-
-      <h3 className="font-medium mb-1">Oversized Heavy Fleece Hoodie</h3>
-<div className='flex justify-between'>
-      <div className="flex items-center gap-2 text-sm mb-2">
-        <span className="font-semibold text-lg">$85</span>
-        <span className="line-through text-gray-400">$105</span>
-      </div>
-
-      <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-        ⭐ 4.7 · 128
-      </div>
-</div>
-      <button className="w-full border rounded-xl py-2 text-sm hover:bg-gray-100 transition">
-        Add to bag
-      </button>
-    </div>
-
-    {/* CARD 2 */}
-    <div className="p-4">
-      <div className="relative rounded-xl overflow-hidden mb-4">
-        <img
-          src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2"
-          className="w-full h-[380px] object-cover"
-        />
-
-        <span className="absolute top-3 left-3 bg-red-500 text-white text-xs px-3 py-1 rounded-full">
-          -20%
-        </span>
-
-        <button className="absolute top-3 right-3 bg-white w-9 h-9 rounded-full flex items-center justify-center shadow">
-          <HeartIcon className='w-5 h-5'/>
-        </button>
-      </div>
-
-      <h3 className="font-medium mb-1">Oversized Heavy Fleece Hoodie</h3>
-<div className='flex justify-between'>
-      <div className="flex items-center gap-2 text-sm mb-2">
-        <span className="font-semibold text-lg">$85</span>
-        <span className="line-through text-gray-400">$105</span>
-      </div>
-
-      <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-        ⭐ 4.7 · 128
-      </div>
-</div>
-      <button className="w-full border rounded-xl py-2 text-sm hover:bg-gray-100 transition">
-        Add to bag
-      </button>
-    </div>
-
-        {/* CARD 3 */}
-    <div className="p-4">
-      <div className="relative rounded-xl overflow-hidden mb-4">
-        <img
-          src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf"
-          className="w-full h-[380px] object-cover"
-        />
-
-        <span className="absolute top-3 left-3 bg-red-500 text-white text-xs px-3 py-1 rounded-full">
-          -20%
-        </span>
-
-        <button className="absolute top-3 right-3 bg-white w-9 h-9 rounded-full flex items-center justify-center shadow">
-          <HeartIcon className='w-5 h-5'/>
-        </button>
-      </div>
-
-      <h3 className="font-medium mb-1">Oversized Heavy Fleece Hoodie</h3>
-<div className='flex justify-between'>
-      <div className="flex items-center gap-2 text-sm mb-2">
-        <span className="font-semibold text-lg">$85</span>
-        <span className="line-through text-gray-400">$105</span>
-      </div>
-
-      <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-        ⭐ 4.7 · 128
-      </div>
-</div>
-      <button className="w-full border rounded-xl py-2 text-sm hover:bg-gray-100 transition">
-        Add to bag
-      </button>
-    </div>
+{
+manProducts.map((item) => (
+  <ProductCard key={item.id} item={item}/>
+))
+}
     
 
   </div>

@@ -4,10 +4,17 @@ import ProductCard from "../components/productCard";
 import { Product } from "/src/data/product.jsx";
 import { Heart, MoveRight, ShoppingCartIcon } from "lucide-react";
 export default function homePage() {
+    const seen = new Set();
+
+  const homeProducts = Product.filter((item) => {
+    if (seen.has(item.categorie)) return false;
+    seen.add(item.categorie);
+    return true;
+  });
   return (
     <>
       <HomeSlider />
-      <div className="px-35 mt-10">
+      <div className="max-w-7xl mx-auto px-6 py-16 mt-10">
         <div className="flex  justify-between">
           <h1 className="text-2xl font-semibold">Shop by Category</h1>
           <div className="flex items-center justify-center gap-2 text-lg">
@@ -15,7 +22,7 @@ export default function homePage() {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-15">
-          {Product.map((item) => (
+          {homeProducts.map((item) => (
             <ProductCard key={item.id} item={item} />
           ))}
         </div>

@@ -17,6 +17,7 @@ function Home() {
           <Link to="/about" className="hover:text-gray-600">Products</Link>
           <Link to="/man-tshirt" className="hover:text-gray-600">Men</Link>
           <Link to="/girl-tshirt" className="hover:text-gray-600">Women</Link>
+           <Link to="/kids-tshirt" className="hover:text-gray-600">Kids</Link>
           <Link to="/sale" className="hover:text-gray-600">Sale</Link>
         </nav>
 
