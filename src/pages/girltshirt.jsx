@@ -1,7 +1,7 @@
 import { Heart, HeartIcon } from 'lucide-react'
 import React from 'react'
 import ProductCard from '../components/productCard'
-import { Product } from '../data/Product'
+import { Product } from '../data/Product.jsx'
 export default function GirlTshirt() {
   const girlProduct = Product.filter((item) => (
     item.genderCatagory === "girl"
