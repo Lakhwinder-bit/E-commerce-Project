@@ -82,7 +82,7 @@ export const Product = [
     variants: [
       {
         color: "white",
-        image:"/images/whitelower.webp",
+        image:"/images/whitelower.png",
       },
       {
         color: "brown",
@@ -90,7 +90,7 @@ export const Product = [
       },
       {
         color: "black",
-        image: "/images/blacklower.webp",
+        image: "/images/blacklower.png",
       },
     ],
     discountPrice: 20,
