@@ -1,35 +1,25 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
-  const [wishlistIds, setWishlistIds] = useState(() => {
-    const saved = localStorage.getItem("wishlist");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [wishlist, setWishlist] = useState([]); // IMPORTANT: default []
 
   const toggleWishlist = (id) => {
-    setWishlistIds((prev) =>
+    setWishlist((prev) =>
       prev.includes(id)
         ? prev.filter((item) => item !== id)
         : [...prev, id]
     );
   };
 
-  const isWishlisted = (id) => wishlistIds.includes(id);
-
-  // ✅ FIXED CLEAR
-  const clearlist = () => {
-    setWishlistIds([]);
+  const isWishlisted = (id) => {
+    return wishlist.includes(id);
   };
-
-  useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlistIds));
-  }, [wishlistIds]);
 
   return (
     <WishlistContext.Provider
-      value={{ wishlistIds, toggleWishlist, isWishlisted, clearlist }}
+      value={{ wishlist, toggleWishlist, isWishlisted }}
     >
       {children}
     </WishlistContext.Provider>
