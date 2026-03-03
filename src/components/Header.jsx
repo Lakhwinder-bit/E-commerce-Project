@@ -198,7 +198,11 @@ function Home() {
         </div>
 
         <div>
-          <button className="w-full bg-black text-white rounded-2xl flex items-center justify-center h-10"> Checkout</button>
+          <button className="w-full bg-black text-white rounded-xl    ease-in-out
+    hover:translate-y-1
+    hover:rotate-2
+    hover:scale-105
+  transition duration-300 flex items-center justify-center h-10"> Checkout</button>
         </div>
        </div>
        </div>
