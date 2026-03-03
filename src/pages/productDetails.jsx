@@ -1,6 +1,40 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+import { Product } from '../data/product';
+import { useState } from 'react';
+export const ProductDetails = () => {
+  const {id} = useParams();
+  const product = Product.find((item) => item.id === Number(id));
+  
+  if(!product) {
+    return <p className='p-10'> Product is not found</p>
+  }
+  const {
+    title,
+    price,
+    oldPrice,
+    discountPrice,
+    variants = [],
+    size = [],
+  } = product;
+  
+  const [selctImage, setselectImage] = useState(variants?.[0]?.image)
+  const [selectedImage, setSelectedImage] = useState(variants[0].color);
+  const currentImage = variants.find((v) => v.color === selectedImage)?.image;
+   // ✅ fade state (for smooth animation)
+  const [isFading, setIsFading] = useState(false);
+   // ✅ handle thumbnail click
+  const handleImageChange = (img) => {
+    if (img === selctImage) return;
 
-export const Product = () => {
+    setIsFading(true);
+
+    setTimeout(() => {
+      setselectImage(img);
+      setIsFading(false);
+    }, 150);
+  };
+  
   return (
    <>
    <section className="max-w-7xl mx-auto px-6 py-12 pb-20">
@@ -9,25 +43,30 @@ export const Product = () => {
     {/* LEFT – IMAGE GALLERY */}
     <div>
       <div className="rounded-2xl overflow-hidden mb-4">
-        <img
-          src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"
-          className="w-full h-[520px] object-cover"
-        />
+         <img
+             key={selctImage}
+              src={selctImage}
+             className={`w-full h-[520px] object-cover transition-all duration-500 ease-in-out ${
+                  isFading ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"
+                }`}
+            />
       </div>
 
       <div className="flex gap-3">
-        {[
-          "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
-          "https://images.unsplash.com/photo-1556905055-8f358a7a47b2",
-          "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
-          "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
-        ].map((img, i) => (
-          <img
-            key={i}
-            src={img}
-            className="w-20 h-20 object-cover rounded-xl border cursor-pointer hover:border-black"
-          />
-        ))}
+        {variants.map((v, i) => (
+              <img
+                key={i}
+                src={v.image}
+                onClick={() => handleImageChange(v.image)}
+  className={`w-20 h-20 object-cover rounded-xl border cursor-pointer transition-all
+                    ${
+                      selctImage === v.image
+                        ? "border-black"
+                        : "border-gray-200 hover:border-black"
+                    }`}
+                
+              />
+            ))}
       </div>
     </div>
 
@@ -39,9 +78,19 @@ export const Product = () => {
       </p>
 
       <h1 className="text-3xl font-semibold mb-3">
-        Oversized Heavy Fleece Hoodie
+        {title}
       </h1>
-
+  {/* ✅ FIXED COLORS (IMPORTANT) */}
+      <div className="flex gap-2 mt-3  ">
+        {variants.map((variant) => (
+          <button
+            key={variant.color}
+            onClick={() => setSelectedImage(variant.color)}
+            className="w-3 h-3 rounded-full border-0 ring-1 cursor-pointer  hover:scale-120 transform duration-200 ease-in-out"
+            style={{ backgroundColor: variant.color }}
+          />
+        ))}
+      </div>
       {/* Rating */}
       <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
         ⭐⭐⭐⭐☆ <span>4.7 / 5</span>
@@ -49,12 +98,13 @@ export const Product = () => {
         <span className="text-green-600">98% would recommend</span>
       </div>
 
+
       {/* Price */}
       <div className="flex items-center gap-3 mb-6">
-        <span className="text-2xl font-semibold">$85.00</span>
-        <span className="line-through text-gray-400">$110.00</span>
+        <span className="text-2xl font-semibold">₹{price}</span>
+        <span className="line-through text-gray-400">₹{oldPrice}</span>
         <span className="text-xs bg-gray-900 text-white px-2 py-1 rounded-full">
-          23% OFF
+           {discountPrice}% OFF
         </span>
       </div>
 
@@ -84,20 +134,22 @@ export const Product = () => {
           </button>
         </div>
 
-        <div className="flex gap-3">
-          {["S", "M", "L", "XL", "XXL"].map((size) => (
-            <button
-              key={size}
-              className={`w-10 h-10 rounded-lg border text-sm ${
-                size === "M"
-                  ? "bg-gray-900 text-white"
-                  : "hover:border-black"
-              }`}
-            >
-              {size}
-            </button>
-          ))}
-        </div>
+         <div className="flex gap-3">
+              {size.map((s, i) => (
+                <button
+                  key={i}
+                  disabled={!s.available}
+                  className={`w-10 h-10 rounded-lg border text-sm
+                    ${
+                      s.available
+                        ? "hover:border-black"
+                        : "bg-gray-100 text-gray-400 line-through cursor-not-allowed"
+                    }`}
+                >
+                  {s.name}
+                </button>
+              ))}
+            </div>
       </div>
 
       {/* CTA */}

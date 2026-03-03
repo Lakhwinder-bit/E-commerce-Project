@@ -15,7 +15,7 @@
 
 /* Active center slide */
 .swiper-slide-active .slide-image {
-  height: 567px;
+  height: 650px;
   transform: scale(1);
   opacity: 1;
 }

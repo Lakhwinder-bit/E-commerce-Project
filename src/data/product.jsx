@@ -3,13 +3,21 @@ export const Product = [
     id: 1,
     title: "Midnight Heavy Tee",
     productName: "Man T-shirt",
-    categorie:"man T-shirt",
-    genderCatagory:"Man",
+    categorie: "man T-shirt",
+    genderCatagory: "Man",
+    size: [
+      { name: "XS", available: false },
+      { name: "S", available: true },
+      { name: "M", available: true },
+      { name: "L", available: true },
+      { name: "XL", available: false },
+      { name: "XXL", available: false },
+    ],
 
     variants: [
       {
         color: "white",
-        image:"/images/white tshirt.webp",
+        image: "/images/white tshirt.webp",
       },
       {
         color: "red",
@@ -21,21 +29,29 @@ export const Product = [
       },
     ],
     discountPrice: 20,
-    price: 32,
-    oldPrice: 40,
+    price: 350,
+    oldPrice: 450,
   },
-    {
+  {
     id: 2,
 
     title: "Midnight Heavy Tee",
     productName: "Man short",
-     categorie:"gym T-shirt",
-     genderCatagory:"Man",
- 
+    categorie: "gym T-shirt",
+    genderCatagory: "Man",
+    size: [
+      { name: "XS", available: true },
+      { name: "S", available: true },
+      { name: "M", available: true },
+      { name: "L", available: true },
+      { name: "XL", available: false },
+      { name: "XXL", available: false },
+    ],
+
     variants: [
       {
         color: "white",
-        image:"/images/white.webp",
+        image: "/images/white.webp",
       },
       {
         color: "red",
@@ -47,21 +63,28 @@ export const Product = [
       },
     ],
     discountPrice: 20,
-    price: 32,
-    oldPrice: 40,
+    price: 320,
+    oldPrice: 450,
   },
-      {
+  {
     id: 3,
 
     title: "kids Heavy Tee",
     productName: "Man short",
-     categorie:"kide t-shirt",
-     genderCatagory:"kids",
- 
+    categorie: "kide t-shirt",
+    genderCatagory: "kids",
+    size: [
+      { name: "XS", available: true },
+      { name: "S", available: true },
+      { name: "M", available: true },
+      { name: "L", available: true },
+      { name: "XL", available: false },
+      { name: "XXL", available: false },
+    ],
     variants: [
       {
         color: "white",
-        image:"/images/kidwhite.webp",
+        image: "/images/kidwhite.webp",
       },
       {
         color: "red",
@@ -73,21 +96,29 @@ export const Product = [
       },
     ],
     discountPrice: 20,
-    price: 32,
-    oldPrice: 40,
+    price: 300,
+    oldPrice: 499,
   },
-        {
-    id:4 ,
+  {
+    id: 4,
 
     title: "man Lower",
     productName: "Man short",
-     categorie:"lower",
-     genderCatagory:"Man",
- 
+    categorie: "lower",
+    genderCatagory: "Man",
+    size: [
+      { name: "XS", available: true },
+      { name: "S", available: true },
+      { name: "M", available: true },
+      { name: "L", available: true },
+      { name: "XL", available: false },
+      { name: "XXL", available: false },
+    ],
+
     variants: [
       {
         color: "white",
-        image:"/images/whitelower.png",
+        image: "/images/whitelower.png",
       },
       {
         color: "brown",
@@ -99,21 +130,29 @@ export const Product = [
       },
     ],
     discountPrice: 20,
-    price: 32,
-    oldPrice: 40,
+    price: 399,
+    oldPrice: 599,
   },
-          {
-    id:5 ,
+  {
+    id: 5,
 
     title: "man Lower",
     productName: "Man short",
-     categorie:"gym T-shirt",
-     genderCatagory:"Man",
- 
+    categorie: "gym T-shirt",
+    genderCatagory: "Man",
+    size: [
+      { name: "XS", available: true },
+      { name: "S", available: true },
+      { name: "M", available: true },
+      { name: "L", available: true },
+      { name: "XL", available: false },
+      { name: "XXL", available: false },
+    ],
+
     variants: [
       {
         color: "white",
-        image:"/images/whitelower.png",
+        image: "/images/whitelower.png",
       },
       {
         color: "brown",
@@ -125,21 +164,29 @@ export const Product = [
       },
     ],
     discountPrice: 20,
-    price: 32,
-    oldPrice: 40,
+    price: 699,
+    oldPrice: 999,
   },
-           {
-    id:6 ,
+  {
+    id: 6,
 
     title: "man Lower",
     productName: "Man short",
-     categorie:"gym T-shirt",
-     genderCatagory:"girl",
- 
+    categorie: "gym T-shirt",
+    genderCatagory: "girl",
+    size: [
+      { name: "XS", available: true },
+      { name: "S", available: false },
+      { name: "M", available: true },
+      { name: "L", available: true },
+      { name: "XL", available: false },
+      { name: "XXL", available: false },
+    ],
+
     variants: [
       {
         color: "white",
-        image:"/images/whitelower.png",
+        image: "/images/girl2.webp",
       },
       {
         color: "brown",
@@ -151,8 +198,7 @@ export const Product = [
       },
     ],
     discountPrice: 20,
-    price: 32,
-    oldPrice: 40,
+    price: 499,
+    oldPrice: 799,
   },
-
 ];

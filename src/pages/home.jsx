@@ -2,7 +2,7 @@ import React from "react";
 import HomeSlider from "../components/heroSlider";
 import ProductCard from "../components/productCard";
 import { Product } from "/src/data/product.jsx";
-import { Heart, MoveRight, ShoppingCartIcon } from "lucide-react";
+import { Heart, Link, MoveRight, ShoppingCartIcon } from "lucide-react";
 export default function homePage() {
     const seen = new Set();
 
@@ -14,11 +14,15 @@ export default function homePage() {
   return (
     <>
       <HomeSlider />
-      <div className="max-w-7xl mx-auto px-6 py-16 mt-10">
+      <div className=" mx-auto px-10 py-16 mt-10">
         <div className="flex  justify-between">
           <h1 className="text-2xl font-semibold">Shop by Category</h1>
           <div className="flex items-center justify-center gap-2 text-lg">
-            View All Categories <MoveRight className="pt-1 " />
+            <div className="">
+            <a href="/about" className="flex items-center gap-1.5">
+            <div> View All Categories </div><MoveRight className="pt-1 " />
+            </a>
+           </div>
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-15">
@@ -30,7 +34,7 @@ export default function homePage() {
 
 
 
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className=" mx-auto px-10 py-16">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-3xl font-bold text-gray-900">Styled By You</h2>
@@ -98,7 +102,7 @@ export default function homePage() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 py-16 relative overflow-hidden">
+      <section className=" mx-auto px-10 py-16 relative overflow-hidden">
         <div className="rounded-2xl overflow-hidden bg-black relative">
           {/* Background */}
           <img
@@ -160,7 +164,7 @@ export default function homePage() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className=" mx-auto px-10 py-16">
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-4xl font-bold text-gray-900">The Journal</h2>
