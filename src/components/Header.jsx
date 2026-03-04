@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowDown, ArrowLeft, ArrowRight, Heart, Search, ShoppingBag, X } from "lucide-react";
 import { useState } from "react";
 import { useEffect } from "react";
-import CartDrawer from "./CartDrawer";
+import CartDrawer from "../components/cartDrawer";
 import { useCart } from "../context/cardContext";
 import {  useWishlist } from "../context/wishListContext";
 
