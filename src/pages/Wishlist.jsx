@@ -5,16 +5,16 @@ import { useState } from "react";
 
 
 export default function LikePage() {
-  const { wishlistIds,  clearlist  } = useWishlist();
+  const { wishlist,  clearlist  } = useWishlist();
   
 
   // 🔥 FILTER liked products
   const likedProducts = Product.filter((item) =>
-    wishlistIds.includes(item.id)
+    wishlist?.includes(item.id)
   );
-
+console.log(wishlist)
   return (
-    <section className="mx-auto px-10 py-10">
+    <section className="mx-auto px-10 py-10 bg-[#fff7ed]">
         {/* LEFT CONTENT */}
     <div className="">
       
@@ -28,15 +28,15 @@ export default function LikePage() {
       </p>
     </div>
     <div className="flex  gap-3 justify-end pt-2 pb-8">
-      <button className="bg-black text-white py-2.5  text-sm w-28 text-center justify-center flex items-center rounded-3xl cursor-pointer">Move To Bag</button>
+      <button className="bg-[#555554] text-white py-2.5  text-sm w-28 text-center justify-center flex items-center rounded-3xl cursor-pointer">Move To Bag</button>
       {
-        wishlistIds.length > 0  && (
+        wishlist?.length > 0  && (
 
 
       <button 
       onClick={ clearlist }
      
-       className="border border-black text-black  py-2.5  w-28 text-sm text-center justify-center flex items-center rounded-3xl cursor-pointer">Unlike All</button>
+       className="border border-[#555554] text-black  py-2.5  w-28 text-sm text-center justify-center flex items-center rounded-3xl cursor-pointer">Unlike All</button>
       )}
       
     </div>
@@ -44,7 +44,7 @@ export default function LikePage() {
       {likedProducts.length === 0 ? (
         <p className="text-gray-500">No liked products yet.</p>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 bg-[#fff7ed]">
           {likedProducts.map((item) => (
             <ProductCard key={item.id} item={item} />
           ))}

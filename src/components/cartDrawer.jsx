@@ -22,7 +22,7 @@ function CartDrawer({ openCart, setOpenCart }) {
 
       {/* Drawer */}
         <div
-        className={`fixed top-0 right-0 h-full w-1/2 bg-white z-50 shadow-xl transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-1/2 bg-[#fff7ed] z-50 shadow-xl transform transition-transform duration-300 ${
           openCart ? "translate-x-0 scrool-body" : "translate-x-full"
         }`}
       >
@@ -45,7 +45,7 @@ function CartDrawer({ openCart, setOpenCart }) {
             cartItems.map((item) => (
           <div className="">
 
-        <div className="flex bg-black/15 shadow-lg items-center gap-20 mx-5 my-3 p-2 rounded-xl  transform ease-in-out duration-300 hover:scale-102">
+        <div className="flex bg-white shadow-lg items-center gap-15 mx-5 my-3 p-2 rounded-xl  transform ease-in-out duration-300 hover:scale-102">
           <div 
           key={item.id}
           >
@@ -64,11 +64,11 @@ function CartDrawer({ openCart, setOpenCart }) {
           <div className="flex items-center gap-2">
             <button 
             onClick={() => decreaseQty(item.id)}
-            className="bg-black text-white h-7 w-7 rounded-full text-sm flex items-center justify-center">-</button>
+            className="bg-[#555554] cursor-pointer text-white h-7 w-7 rounded-full text-sm flex items-center justify-center">-</button>
             <div className="bg-white text-black h-8 w-8 rounded-full text-sm flex items-center justify-center font-semibold">{item.quantity}</div>
             <button 
             onClick={() => addToCart(item)}
-            className="bg-black text-white h-7 w-7 rounded-full text-sm flex items-center justify-center">+</button>
+            className="bg-[#555554] cursor-pointer text-white h-7 w-7 rounded-full text-sm flex items-center justify-center">+</button>
           </div>
 
           <div className="text-sm font-semibold">
@@ -86,9 +86,9 @@ function CartDrawer({ openCart, setOpenCart }) {
 
         {/* Bottom */}
 
-            <div className=" h-[35%] flex justify-between items-center rounded-t-[45px] px-8 py-2 bg-black/30">
+            <div className=" h-[35%] flex justify-between items-center rounded-t-[45px] px-8 py-2 bg-white">
 <div>
-  <button className=" px-5 text-sm bg-black/30 gap-3 text-white rounded-2xl flex items-center justify-center h-10"><ArrowLeft/>Continue</button>
+  <button className=" cursor-pointer px-5 text-sm bg-black/30 gap-3 text-white rounded-2xl flex items-center justify-center h-10"><ArrowLeft/>Continue</button>
   </div>
        <div className="w-2/5 flex flex-col gap-5">
         <div>
@@ -97,7 +97,7 @@ function CartDrawer({ openCart, setOpenCart }) {
         </div>
 
         <div>
-          <button className="w-full bg-black text-white rounded-xl    ease-in-out
+          <button className="w-full cursor-pointer bg-[#555554] text-white rounded-xl    ease-in-out
     hover:translate-y-1
     hover:rotate-2
     hover:scale-105

@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+:root{
+  --main-background:"#fff7ed";
+  --main-button-bg:"#555554";
+  --text-color:"##171717";
+}
 
 
 /* Default slide (left & right) */

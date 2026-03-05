@@ -18,7 +18,7 @@ export default function GirlTshirt() {
   return (
     <>
       {/* HEADER */}
-      <section className="mx-auto px-10 py-10">
+      <section className="mx-auto px-10 py-10 bg-[#fff7ed]">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           <div>
           
@@ -35,7 +35,7 @@ export default function GirlTshirt() {
         </div>
       </section>
 
-      <section className=" mx-auto px-10 py-10">
+      <section className=" mx-auto px-10 py-10 bg-[#fff7ed]">
         {/* TOP BAR */}
         <FilterBar
           openFilter={filters.openFilter}

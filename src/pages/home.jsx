@@ -13,8 +13,9 @@ export default function homePage() {
   });
   return (
     <>
+    <main className="bg-[#fff7ed]">
       <HomeSlider />
-      <div className=" mx-auto px-10 py-16 mt-10">
+      <div className=" mx-auto px-10 py-16 mt-10 ">
         <div className="flex  justify-between">
           <h1 className="text-2xl font-semibold">Shop by Category</h1>
           <div className="flex items-center justify-center gap-2 text-lg">
@@ -231,6 +232,7 @@ export default function homePage() {
           </div>
         </div>
       </section>
+      </main>
     </>
   );
 }

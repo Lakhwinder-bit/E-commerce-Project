@@ -15,7 +15,7 @@ export default function  About() {
     } = useProductFilters(Product);
   return (
     <>
-    <section className=" mx-auto px-10 py-10 ">
+    <section className=" mx-auto px-10 py-10 bg-[#fff7ed]">
   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
     {/* LEFT CONTENT */}
@@ -38,7 +38,7 @@ export default function  About() {
 
 
 
-<section className=" mx-auto px-10 py-10">
+<section className=" mx-auto px-10 py-10 bg-[#fff7ed]">
      <FilterBar
             openFilter={filters.openFilter}
             toggleFilter={toggleFilter}

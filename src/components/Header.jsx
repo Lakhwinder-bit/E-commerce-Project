@@ -23,7 +23,7 @@ function Home() {
    const { cartItems } = useCart(); 
    const { wishlist } = useWishlist();
   return (
-    <header className="w-full border-b border-gray-200">
+    <header className="w-full border-b border-gray-200 bg-[#fef2e4]">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         
         {/* Logo */}

@@ -35,7 +35,7 @@ export default function ProductCard({ item }) {
   className="w-full h-full object-cover"
   alt={title}
           />
-          <span className="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">
+          <span className="absolute top-4 left-4 bg-[#555554] text-white text-xs px-3 py-1 rounded-full">
             {discountPrice}% OFF
           </span>
         </div>
@@ -74,7 +74,13 @@ export default function ProductCard({ item }) {
           {variants.map((variant) => (
             <button
               key={variant.color}
-              onClick={() => setSelectedImage(variant.color)}
+              
+              onClick={(e) => {
+                 e.preventDefault(); // ✅ STOP LINK
+                e.stopPropagation(); // ✅ STOP BUBBLING
+                setSelectedImage(variant.color)
+              }}
+              
               className="w-3 h-3 rounded-full border-0 ring-1 cursor-pointer  hover:scale-120 transform duration-200 ease-in-out"
               style={{ backgroundColor: variant.color }}
             />
