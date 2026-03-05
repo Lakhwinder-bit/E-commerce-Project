@@ -97,11 +97,13 @@ function CartDrawer({ openCart, setOpenCart }) {
         </div>
 
         <div>
+          <a href="/checkout">
           <button className="w-full cursor-pointer bg-[#555554] text-white rounded-xl    ease-in-out
     hover:translate-y-1
     hover:rotate-2
     hover:scale-105
   transition duration-300 flex items-center justify-center h-10"> Checkout</button>
+  </a>
         </div>
        </div>
        </div>

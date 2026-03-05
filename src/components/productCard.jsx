@@ -18,7 +18,8 @@ export default function ProductCard({ item }) {
     productName,
   } = item;
   const [selectedImage, setSelectedImage] = useState(variants[0].color);
-  const currentImage = variants.find((v) => v.color === selectedImage)?.image;
+  const currentImage =  
+  variants.find((v) => v.color === selectedImage)?.image?.[0];
   const { toggleWishlist, isWishlisted } = useWishlist();
   const liked = isWishlisted(item.id);
   const { addToCart } = useCart();
@@ -93,10 +94,12 @@ export default function ProductCard({ item }) {
                 e.preventDefault(); // ✅ STOP LINK
                 e.stopPropagation(); // ✅ STOP BUBBLING
                 toggleWishlist(item.id); // ✅ PASS ID ONLY
+               
               }}
               className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer"
             >
               <Heart
+              
                 className={`w-5 h-5 transition ${
                   liked ? "fill-red-500 text-red-500" : ""
                 }`}
@@ -106,7 +109,7 @@ export default function ProductCard({ item }) {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-
+                 
                 animateToCart(imageRef.current);
                 addToCart(item);
               }}

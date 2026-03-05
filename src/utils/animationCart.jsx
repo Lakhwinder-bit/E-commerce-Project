@@ -1,9 +1,9 @@
-// src/utils/animateToCart.js
-
 import gsap from "gsap";
 
 export const animateToCart = (imgElement) => {
+
   const bag = document.getElementById("bag-icon");
+
   if (!imgElement || !bag) return;
 
   const imgRect = imgElement.getBoundingClientRect();
@@ -19,23 +19,29 @@ export const animateToCart = (imgElement) => {
     width: imgRect.width,
     height: imgRect.height,
     zIndex: 9999,
-    borderRadius: "12px",
+   
+
+
   });
 
   gsap.to(clone, {
-    duration: 0.8,
-    left: bagRect.left,
-    top: bagRect.top,
+    duration: 1.2,
+     x: bagRect.left - imgRect.left,
+     y: bagRect.top - imgRect.top,
     width: 20,
     height: 20,
-    opacity: 0.5,
+    opacity: 0.4,
     ease: "power2.inOut",
-    onComplete: () => clone.remove(),
+    onComplete: () =>  
+       {
+      console.log("animation finished") 
+      clone.remove()
+    }
   });
-
-  gsap.fromTo(
+    gsap.fromTo(
     bag,
     { scale: 1 },
-    { scale: 1.3, duration: 0.2, yoyo: true, repeat: 1 }
+    { scale: 1.2, duration: 0.5, yoyo: true, repeat: 1 }
   );
+
 };
