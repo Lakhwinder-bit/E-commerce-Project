@@ -152,3 +152,26 @@ function CartDrawer({ openCart, setOpenCart }) {
 }
 
 export default CartDrawer;
+
+    // <div className="relative z-10">
+    //         <Swiper
+    //           onSwiper={(swiper) => (swiperRef.current = swiper)}
+    //           onSlideChange={(swiper) => setActive(swiper.realIndex)}
+    //           slidesPerView={1}
+    //           centeredSlides
+    //           loop
+    //           speed={1200}
+    //         >
+    //           {slides.map((slide, index) => (
+    //             <SwiperSlide key={index}>
+    //               <div className=" slide-inner flex justify-center items-center h-[650px] ">
+    //                 <img
+    //                   src={slide.image}
+    //                   alt={slide.label}
+    //                   className="slide-image max-h-[700px]   object-cover"
+    //                 />
+    //               </div>
+    //             </SwiperSlide>
+    //           ))}
+    //         </Swiper>
+    //       </div>
