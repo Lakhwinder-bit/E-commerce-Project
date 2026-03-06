@@ -4,10 +4,13 @@ import { Product } from "../data/product";
 import { Heart } from "lucide-react";
 import { useCart } from "../context/cardContext";
 import { animateToWishlist } from "../utils/animateToWishlist";
+import { useWishlist } from "../context/wishListContext";
 
 export const ProductDetails = () => {
 
   const { id } = useParams();
+
+  const { toggleWishlist, isWishlisted } = useWishlist(); // ✅ FIX
 
   const product = Product.find((item) => item.id === Number(id));
 
@@ -27,8 +30,9 @@ export const ProductDetails = () => {
   const [selectedVariant, setSelectedVariant] = useState(variants[0]);
   const [selectedImage, setSelectedImage] = useState(variants[0].image[0]);
   const [selectedSize, setSelectedSize] = useState(null);
-  const [liked, setLiked] = useState(false);
   const [isFading, setIsFading] = useState(false);
+
+  const liked = isWishlisted(product.id); // ✅ wishlist state
 
   const { addToCart } = useCart();
 
@@ -56,6 +60,26 @@ export const ProductDetails = () => {
 
   };
 
+  // Add to cart
+  const handleAddToCart = () => {
+
+    if (!selectedSize) {
+      alert("Please select size");
+      return;
+    }
+
+    const cartItem = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image: selectedVariant.image[0],
+      selectedSize: selectedSize,
+      selectedColor: selectedVariant.color
+    };
+
+    addToCart(cartItem);
+  };
+
   return (
     <div className="bg-[#fff7ed]">
 
@@ -64,7 +88,6 @@ export const ProductDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
           {/* LEFT IMAGE */}
-
           <div>
 
             <div className="rounded-2xl overflow-hidden mb-4">
@@ -79,7 +102,6 @@ export const ProductDetails = () => {
             </div>
 
             {/* THUMBNAILS */}
-
             <div className="flex gap-3">
 
               {selectedVariant.image.map((img, i) => (
@@ -103,7 +125,6 @@ export const ProductDetails = () => {
           </div>
 
           {/* RIGHT SIDE */}
-
           <div>
 
             <p className="text-xs uppercase tracking-wider text-gray-500 mb-2">
@@ -115,7 +136,6 @@ export const ProductDetails = () => {
             </h1>
 
             {/* COLORS */}
-
             <div className="flex gap-2 mt-3 mb-6">
 
               {variants.map((variant) => (
@@ -123,7 +143,7 @@ export const ProductDetails = () => {
                 <button
                   key={variant.color}
                   onClick={() => handleColorChange(variant)}
-                  className="w-5 h-5 rounded-full ring-1"
+                  className="w-5 h-5 rounded-full ring-1 cursor-pointer"
                   style={{ backgroundColor: variant.color }}
                 />
 
@@ -132,7 +152,6 @@ export const ProductDetails = () => {
             </div>
 
             {/* PRICE */}
-
             <div className="flex items-center gap-3 mb-6">
 
               <span className="text-2xl font-semibold">
@@ -150,7 +169,6 @@ export const ProductDetails = () => {
             </div>
 
             {/* SIZE */}
-
             <div className="mb-8">
 
               <p className="text-sm font-medium mb-2">
@@ -184,16 +202,18 @@ export const ProductDetails = () => {
             </div>
 
             {/* BUTTONS */}
-
             <div className="flex gap-4 mb-4">
 
-              <button className="flex-1 bg-[#555554] text-white py-3 rounded-xl text-sm font-medium hover:bg-black/70 transition">
+              <button 
+                onClick={handleAddToCart} 
+                className="flex-1 bg-[#555554] text-white py-3 rounded-xl text-sm font-medium hover:bg-black/70 transition"
+              >
                 Add to Bag
               </button>
 
               <button
                 onClick={() => {
-                  setLiked(!liked);
+                  toggleWishlist(product.id);
                   animateToWishlist(heartRef.current);
                 }}
                 className="w-40 h-12 border rounded-xl flex items-center justify-center gap-3 text-sm"

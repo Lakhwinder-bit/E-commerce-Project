@@ -4,7 +4,7 @@ import Home from "../pages/home";
 import About from "../pages/about";
 
 import LikePage  from "../pages/Wishlist";
-import { Sale } from "../pages/sale";
+import MyOrders from "../pages/myOrders"
 import ManTshirt from "../pages/mantshirt";
 import GirlTshirt from "../pages/girltshirt";
 import {ProductDetails} from "../pages/productDetails";
@@ -25,7 +25,7 @@ function AppRoutes() {
         <Route path="/about" element={<About />} />
        
         <Route path="/likePage" element={<LikePage  />} />
-        <Route path="/sale" element={<Sale />} />
+        <Route path="/MyOrders" element={<MyOrders />} />
         <Route path="/product/:id" element={<ProductDetails/>}/>
 
         {/* Category pages */}

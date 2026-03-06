@@ -11,12 +11,59 @@ export default function CheckoutPage() {
     0
   );
 
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    country: "",
+    postalCode: "",
+    phone: ""
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = () => {
+
+    if (!formData.firstName || !formData.address || !formData.phone) {
+      alert("Please fill required fields");
+      return;
+    }
+
+    const order = {
+      id: Date.now(),
+      customer: formData,
+      items: cartItems,
+      paymentMethod: paymentMethod,
+      total: totalPrice,
+      date: new Date().toLocaleDateString(),
+      status: "Pending"
+    };
+
+    const existingOrders =
+      JSON.parse(localStorage.getItem("orders")) || [];
+
+    const updatedOrders = [...existingOrders, order];
+
+    localStorage.setItem("orders", JSON.stringify(updatedOrders));
+
+    alert("Order placed successfully!");
+  };
+
+
   return (
     <div className="min-h-screen bg-[#fff7ed] flex items-center justify-center p-6">
 
       <div className="w-full max-w-7xl bg-white rounded-3xl shadow-md p-10">
 
-        <h1 className="text-3xl font-semibold mb-2">Shopping Cart</h1>
+        <h1 className="text-2xl font-semibold mb-5">Shopping Cart</h1>
 
         <div className="flex gap-10">
 
@@ -24,14 +71,17 @@ export default function CheckoutPage() {
           <div className="w-[60%]">
           {/* Shipping Address */}
             <div>
-              <h2 className="font-semibold text-lg mb-4">SHIPPING ADDRESS</h2>
+              <h2 className="font-semibold text-sm mb-4">SHIPPING ADDRESS</h2>
 
               <div className="grid grid-cols-2 gap-6">
                 {/* First Name */}
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder=" "
+                 name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+
                     className="peer w-full border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:outline-none focus:border-black"
                   />
                   <label
@@ -50,6 +100,9 @@ export default function CheckoutPage() {
                   <input
                     type="text"
                     placeholder=" "
+                    name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
                     className="peer w-full border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:outline-none focus:border-black"
                   />
                   <label
@@ -68,6 +121,9 @@ export default function CheckoutPage() {
                   <input
                     type="text"
                     placeholder=" "
+                    name="address"
+                value={formData.address}
+                onChange={handleChange}
                     className="peer w-full border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:outline-none focus:border-black"
                   />
                   <label
@@ -86,6 +142,9 @@ export default function CheckoutPage() {
                   <input
                     type="text"
                     placeholder=" "
+                    name="city"
+                value={formData.city}
+                onChange={handleChange}
                     className="peer w-full border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:outline-none focus:border-black"
                   />
                   <label
@@ -104,6 +163,9 @@ export default function CheckoutPage() {
                   <input
                     type="text"
                     placeholder=" "
+                    name="country"
+                value={formData.country}
+                onChange={handleChange}
                     className="peer w-full border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:outline-none focus:border-black"
                   />
                   <label
@@ -122,6 +184,9 @@ export default function CheckoutPage() {
                   <input
                     type="text"
                     placeholder=" "
+                 name="postalCode"
+                value={formData.postalCode}
+                onChange={handleChange}
                     className="peer w-full border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:outline-none focus:border-black"
                   />
                   <label
@@ -140,6 +205,10 @@ export default function CheckoutPage() {
                   <input
                     type="text"
                     placeholder=" "
+              name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                
                     className="peer w-full border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:outline-none focus:border-black"
                   />
                   <label
@@ -155,7 +224,7 @@ export default function CheckoutPage() {
               </div>
 
               <div className="mt-10">
-                <h2 className="font-semibold text-lg mb-6">PAYMENT METHOD</h2>
+                <h2 className="font-semibold text-sm mb-6">PAYMENT METHOD</h2>
 
                 {/* Payment Options */}
                 <div className="space-y-4">
@@ -339,7 +408,9 @@ export default function CheckoutPage() {
     hover:scale-105
   transition duration-300"
                 >
-                  <button className="bg-[#555554] text-white px-6 py-3 rounded-xl cursor-pointer">
+                  <button 
+                  onClick={handleSubmit}
+                  className="bg-[#555554] text-white px-6 py-3 rounded-xl cursor-pointer">
                     Save And Deliver Here
                   </button>
                 </div>
@@ -349,44 +420,52 @@ export default function CheckoutPage() {
           </div>
 
           {/* RIGHT SIDE */}
-          <div className="w-[40%] bg-[#fff7ed] p-6 rounded-2xl space-y-6">
+          <div className="w-[40%] bg-[#fff7ed] p-6 rounded-2xl space-y-6 h-fit sticky top-3">
 
-            <h3 className="font-semibold text-lg">
+            <h3 className="font-semibold text-sm">
               Your Order
             </h3>
-
+<div className="max-h-130 overflow-scroll overflow-x-hidden">
             {cartItems.length === 0 ? (
               <p className="text-gray-500">
                 Your cart is empty
               </p>
             ) : (
+              
               cartItems.map((item) => (
-                <div key={item.id} className="flex gap-4">
+                <div key={item.id} className=" flex flex-col px-8 pb-3">
+                  <div className="w-full h-[0.5px]  bg-gray-300"></div>
 
+                  <div className="flex mt-3 gap-4 ">
+                  <div>
                   <img
-                    className="w-16 h-16 object-cover rounded-lg"
-                    src={item?.variants?.[0]?.image}
+                    className="w-20 h-20 object-cover rounded-lg"
+                    src={item.image}
                     alt={item.title}
                   />
-
+                 </div>
                   <div className="flex-1">
-                    <p className="font-medium">
+                    <p className="font-medium capitalize">
                       {item.title}
                     </p>
 
                     <p className="text-sm text-gray-500">
-                      Size XL · Blue
+                      Size {item.selectedSize}
                     </p>
 
                     <p className="font-semibold">
                       ₹{item.price} x {item.quantity}
                     </p>
                   </div>
-
+                  <div className="text-md text-gray-700">
+                    ₹{item.price * item.quantity}
+                  </div>
+                  
+</div>
                 </div>
               ))
             )}
-
+</div>
             <div className="border-t pt-4 flex justify-between font-semibold text-lg">
               <span>Total</span>
               <span>₹{totalPrice}</span>

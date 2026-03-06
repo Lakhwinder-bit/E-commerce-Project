@@ -1,125 +1,216 @@
 import { Heart, ShoppingCart } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useWishlist } from "../context/wishListContext";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/cardContext";
 import { animateToCart } from "../utils/animationCart";
-import { useRef } from "react";
 
 export default function ProductCard({ item }) {
+
   const {
     variants = [],
     discountPrice,
     oldPrice,
     price,
-    size,
-    title,
-
-    productName,
+    size = [],
+    title
   } = item;
+
   const [selectedImage, setSelectedImage] = useState(variants[0].color);
-  const currentImage =  
-  variants.find((v) => v.color === selectedImage)?.image?.[0];
+  const [showSize, setShowSize] = useState(false);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [sizeError, setSizeError] = useState(false);
+
+  const currentImage =
+    variants.find((v) => v.color === selectedImage)?.image?.[0];
+
   const { toggleWishlist, isWishlisted } = useWishlist();
   const liked = isWishlisted(item.id);
+
   const { addToCart } = useCart();
 
   const imageRef = useRef();
 
+  const handleAddToCart = (sizeName) => {
+
+    const cartItem = {
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      image: currentImage,
+      selectedSize: sizeName,
+      selectedColor: selectedImage
+    };
+
+    animateToCart(imageRef.current);
+    addToCart(cartItem);
+
+    setShowSize(false);
+    setSelectedSize(null);
+    setSizeError(false);
+  };
+
   return (
     <Link to={`/product/${item.id}`}>
-      <div className="bg-white  overflow-hidden shadow relative hover:scale-102 transform duration-200 ease-in cursor-pointer">
+
+      <div className="bg-white overflow-hidden shadow relative hover:scale-[1.02] duration-200 cursor-pointer">
+
+        {/* IMAGE */}
         <div className="relative h-[360px]">
+
           <img
-             ref={imageRef}
-  src={currentImage}
-  className="w-full h-full object-cover"
-  alt={title}
+            ref={imageRef}
+            src={currentImage}
+            className="w-full h-full object-cover"
+            alt={title}
           />
+
           <span className="absolute top-4 left-4 bg-[#555554] text-white text-xs px-3 py-1 rounded-full">
             {discountPrice}% OFF
           </span>
+
         </div>
 
+        {/* CONTENT */}
         <div className="p-2">
-          <div className="flex flex-col">
-            <div className="mt-2">
-              <h3 className="font-semibold text-lg">{title}</h3>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="font-bold text-lg">₹{price}</div>
-              <div className="text-sm text-gray-400 line-through leading-[60%]">
-                ₹{oldPrice}
-              </div>
-            </div>
 
-            <div className="mt-2 flex gap-2 flex-wrap">
-              {size.map((sObj, index) => (
-                <div
-                  key={index}
-                  className={`h-6 w-6 rounded-md flex justify-center items-center text-xs 
-        ${
-          sObj.available
-            ? "bg-gray-200 text-black"
-            : "bg-gray-100 text-gray-400 line-through cursor-not-allowed"
-        }`}
-                >
-                  {sObj.name}
-                </div>
-              ))}
+          <h3 className="font-semibold text-lg capitalize">
+            {title}
+          </h3>
+
+          <div className="flex items-center gap-2">
+            <div className="font-bold text-lg">₹{price}</div>
+            <div className="text-sm text-gray-400 line-through">
+              ₹{oldPrice}
             </div>
           </div>
+
+          {/* SIZE PREVIEW */}
+          <div className="mt-2 flex gap-2 flex-wrap">
+            {size.map((sObj, index) => (
+              <div
+                key={index}
+                className={`h-6 w-6 rounded-md flex justify-center items-center text-xs
+                ${
+                  sObj.available
+                    ? "bg-gray-200 text-black"
+                    : "bg-gray-100 text-gray-400 line-through"
+                }`}
+              >
+                {sObj.name}
+              </div>
+            ))}
+          </div>
+
         </div>
-        {/* ✅ FIXED COLORS (IMPORTANT) */}
-        <div className="flex gap-2 mt-3 absolute bottom-32 left-3 ">
+
+        {/* COLORS */}
+        <div className="flex gap-2 absolute bottom-32 left-3">
           {variants.map((variant) => (
             <button
               key={variant.color}
-              
               onClick={(e) => {
-                 e.preventDefault(); // ✅ STOP LINK
-                e.stopPropagation(); // ✅ STOP BUBBLING
-                setSelectedImage(variant.color)
+                e.preventDefault();
+                e.stopPropagation();
+                setSelectedImage(variant.color);
               }}
-              
-              className="w-3 h-3 rounded-full border-0 ring-1 cursor-pointer  hover:scale-120 transform duration-200 ease-in-out"
+              className="w-3 h-3 rounded-full ring-1"
               style={{ backgroundColor: variant.color }}
             />
           ))}
         </div>
-        <div className="absolute bottom-30 right-4 z-40">
-          <div className="flex flex-col gap-1.5">
-            <div
-              onClick={(e) => {
-                e.preventDefault(); // ✅ STOP LINK
-                e.stopPropagation(); // ✅ STOP BUBBLING
-                toggleWishlist(item.id); // ✅ PASS ID ONLY
-               
-              }}
-              className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer"
-            >
-              <Heart
-              
-                className={`w-5 h-5 transition ${
-                  liked ? "fill-red-500 text-red-500" : ""
-                }`}
-              />
-            </div>
-            <div
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                 
-                animateToCart(imageRef.current);
-                addToCart(item);
-              }}
-              className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
-            >
-              <ShoppingCart className="w-5 h-5" />
-            </div>
+
+        {/* WISHLIST + CART */}
+        <div className="absolute bottom-30 right-4 z-40 flex flex-col gap-2">
+
+          {/* WISHLIST */}
+          <div
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              toggleWishlist(item.id);
+            }}
+            className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+          >
+            <Heart
+              className={`w-5 h-5 ${
+                liked ? "fill-red-500 text-red-500" : ""
+              }`}
+            />
           </div>
+
+          {/* ADD TO CART */}
+          <div
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setShowSize(true);
+              setSizeError(true);
+            }}
+            className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+          >
+            <ShoppingCart className="w-5 h-5" />
+          </div>
+
         </div>
+
+        {/* SIZE SELECTOR */}
+        <div
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+          className={`absolute bottom-0 left-0 w-full
+          bg-white/90 backdrop-blur-lg p-3 shadow-lg
+          transition-all duration-300 ease-in-out
+          ${
+            showSize
+              ? "translate-y-0 opacity-100"
+              : "translate-y-full opacity-0 pointer-events-none"
+          }`}
+        >
+
+          <p className="text-sm font-medium mb-1">
+            Select Size
+          </p>
+
+          {sizeError && (
+            <p className="text-red-500 text-xs mb-2">
+              Please select a size
+            </p>
+          )}
+
+          <div className="flex gap-2 flex-wrap">
+
+            {size.map((s) => (
+
+              <button
+                key={s.name}
+                disabled={!s.available}
+                onClick={() => {
+                  setSelectedSize(s.name);
+                  handleAddToCart(s.name);
+                }}
+                className={`h-7 w-7 rounded-md flex justify-center items-center text-xs
+                ${
+                  selectedSize === s.name
+                    ? "bg-black text-white"
+                    : s.available
+                    ? "bg-gray-200 hover:bg-black hover:text-white"
+                    : "opacity-40 cursor-not-allowed bg-gray-100 line-through"
+                }`}
+              >
+                {s.name}
+              </button>
+
+            ))}
+
+          </div>
+
+        </div>
+
       </div>
+
     </Link>
   );
 }

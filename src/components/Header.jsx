@@ -54,8 +54,8 @@ function Home() {
           <Link to="/kids-tshirt" className="hover:text-gray-600">
             Kids
           </Link>
-          <Link to="/sale" className="hover:text-gray-600">
-            Sale
+          <Link to="/MyOrders" className="hover:text-gray-600">
+            My Order
           </Link>
         </nav>
 
