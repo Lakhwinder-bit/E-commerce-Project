@@ -82,8 +82,24 @@ export const ProductDetails = () => {
 
   return (
     <div className="bg-[#fff7ed]">
+         <section className="mx-auto p-3 md:p-5 bg-[#fff7ed]">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          <div>
+           
 
-      <section className="max-w-7xl mx-auto px-6 py-12">
+            <h1 className="text-lg md:text-4xl font-semibold text-gray-900 mb-2">
+              Product Detaile
+            </h1>
+
+            <p className="text-gray-600 max-w-xl text-sm md:text-lg">
+              Premium quality Collection designed for everyday comfort and
+              style.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto md:p-5 p-3">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 

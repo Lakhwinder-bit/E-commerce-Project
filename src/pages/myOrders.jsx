@@ -13,7 +13,7 @@ export default function OrderPage() {
   }, []);
 
   return (
-    <div className="bg-[#fef2e4] min-h-screen p-6 px-32">
+    <div className="bg-[#fef2e4] min-h-screen p-4 md:px-32">
       <h1 className="text-xl font-semibold mb-8 mt-2">My Orders</h1>
 
 
@@ -23,7 +23,7 @@ export default function OrderPage() {
 
 ) : (
         orders.map((order) => (
-        <div className="bg-white rounded-xl shadow p-5">
+        <div className="bg-white rounded-xl shadow md:p-5 p-3">
           {/* ORDER HEADER */}
           <div
             className="flex justify-between items-center cursor-pointer"
@@ -115,18 +115,18 @@ export default function OrderPage() {
                       />
 
                       <div>
-                        <p className="font-medium text-md capitalize">{item.title}</p>
+                        <p className="font-medium md:text-md text-sm capitalize ">{item.title}</p>
 
-                        <p className="text-sm text-gray-500">
-                          Color: <span className="text-black pr-3">{item.selectedColor}</span> • Qty: <span className="pl-3 text-black">{item.quantity}</span>
+                        <p className="md:text-sm text-xs text-gray-500 pt-2">
+                          Color: <span className="text-black md:pr-3 pr-1">{item.selectedColor}</span> • Qty: <span className="pl-3 text-black">{item.quantity}</span>
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="md:text-sm text-xs text-gray-500">
                           Size: <span className="text-black">{item.selectedSize}</span>
                         </p>
                       </div>
 
                     </div>
-                      <p className="font-semibold text-lg pl-10 ">₹{item.price * item.quantity}</p>
+                      <p className="font-semibold text-lg md:pl-10 pl-0 ">₹{item.price * item.quantity}</p>
 </div>
                    
                   </div>

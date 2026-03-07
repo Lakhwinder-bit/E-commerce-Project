@@ -21,7 +21,7 @@ function CartDrawer({ openCart, setOpenCart }) {
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-1/2 bg-[#fff7ed] z-50 shadow-xl transform transition-transform duration-300 flex flex-col ${
+        className={`fixed top-0 right-0 h-full  w-full md:w-1/2 bg-[#fff7ed] z-50 shadow-xl transform transition-transform duration-300 flex flex-col ${
           openCart ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -54,7 +54,7 @@ function CartDrawer({ openCart, setOpenCart }) {
             cartItems.map((item) => (
               <div
                 key={item.id}
-                className="flex gap-8 bg-white shadow-lg mx-5 my-3 p-2 rounded-xl hover:scale-102 transition"
+                className="flex md:gap-8 gap-2 bg-white shadow-lg md:mx-5 md:my-3 my-1 p-2 rounded-xl hover:scale-102 transition"
               >
                 {/* Image */}
                 <img
@@ -80,7 +80,7 @@ function CartDrawer({ openCart, setOpenCart }) {
                   </div>
 
                   {/* Quantity */}
-                  <div className="flex flex-col py-2 pr-6 items-center gap-4">
+                  <div className="flex flex-col py-2 md:pr-6 items-center gap-4">
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() =>
@@ -133,7 +133,7 @@ function CartDrawer({ openCart, setOpenCart }) {
           <div className="w-2/5 flex flex-col gap-4">
             <div>
               <h1 className="text-2xl font-semibold">₹{totalPrice}</h1>
-              <h3 className="text-sm text-gray-700 flex mt-1 gap-2 items-center">
+              <h3 className="md:text-sm text-[10px] text-gray-700 flex mt-1 gap-2 items-center">
                 Tax and shipping calculated at checkout
                 <ArrowRight size={16} />
               </h3>
@@ -153,25 +153,4 @@ function CartDrawer({ openCart, setOpenCart }) {
 
 export default CartDrawer;
 
-    // <div className="relative z-10">
-    //         <Swiper
-    //           onSwiper={(swiper) => (swiperRef.current = swiper)}
-    //           onSlideChange={(swiper) => setActive(swiper.realIndex)}
-    //           slidesPerView={1}
-    //           centeredSlides
-    //           loop
-    //           speed={1200}
-    //         >
-    //           {slides.map((slide, index) => (
-    //             <SwiperSlide key={index}>
-    //               <div className=" slide-inner flex justify-center items-center h-[650px] ">
-    //                 <img
-    //                   src={slide.image}
-    //                   alt={slide.label}
-    //                   className="slide-image max-h-[700px]   object-cover"
-    //                 />
-    //               </div>
-    //             </SwiperSlide>
-    //           ))}
-    //         </Swiper>
-    //       </div>
+   

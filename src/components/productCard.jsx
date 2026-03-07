@@ -56,7 +56,7 @@ export default function ProductCard({ item }) {
       <div className="bg-white overflow-hidden shadow relative hover:scale-[1.02] duration-200 cursor-pointer">
 
         {/* IMAGE */}
-        <div className="relative h-[360px]">
+        <div className="relative h-[200px] md:h-[360px]">
 
           <img
             ref={imageRef}
@@ -65,7 +65,7 @@ export default function ProductCard({ item }) {
             alt={title}
           />
 
-          <span className="absolute top-4 left-4 bg-[#555554] text-white text-xs px-3 py-1 rounded-full">
+          <span className="absolute md:top-4  top-2  left-2 md:left-4 bg-[#555554] text-white text-[8px]   px-3 py-1 rounded-full">
             {discountPrice}% OFF
           </span>
 
@@ -74,13 +74,13 @@ export default function ProductCard({ item }) {
         {/* CONTENT */}
         <div className="p-2">
 
-          <h3 className="font-semibold text-lg capitalize">
+          <h3 className="font-semibold text-sm md:text-lg capitalize">
             {title}
           </h3>
 
           <div className="flex items-center gap-2">
-            <div className="font-bold text-lg">₹{price}</div>
-            <div className="text-sm text-gray-400 line-through">
+            <div className="font-bold  text-sm md:text-lg">₹{price}</div>
+            <div className=" text-xs md:text-sm text-gray-400 line-through">
               ₹{oldPrice}
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function ProductCard({ item }) {
             {size.map((sObj, index) => (
               <div
                 key={index}
-                className={`h-6 w-6 rounded-md flex justify-center items-center text-xs
+                className={` h-4 md:h-6  w-4 md:w-6 rounded-md flex justify-center items-center text-xs
                 ${
                   sObj.available
                     ? "bg-gray-200 text-black"
@@ -105,7 +105,7 @@ export default function ProductCard({ item }) {
         </div>
 
         {/* COLORS */}
-        <div className="flex gap-2 absolute bottom-32 left-3">
+        <div className="flex gap-2 absolute  bottom-22 md:bottom-32 left-3">
           {variants.map((variant) => (
             <button
               key={variant.color}
@@ -114,14 +114,14 @@ export default function ProductCard({ item }) {
                 e.stopPropagation();
                 setSelectedImage(variant.color);
               }}
-              className="w-3 h-3 rounded-full ring-1"
+              className=" w-2 md:w-3 h-2 md:h-3 rounded-full ring-1"
               style={{ backgroundColor: variant.color }}
             />
           ))}
         </div>
 
         {/* WISHLIST + CART */}
-        <div className="absolute bottom-30 right-4 z-40 flex flex-col gap-2">
+        <div className="absolute md:bottom-30 bottom-25 md:right-4 right-2 z-20 flex flex-col gap-2">
 
           {/* WISHLIST */}
           <div
@@ -130,10 +130,10 @@ export default function ProductCard({ item }) {
               e.stopPropagation();
               toggleWishlist(item.id);
             }}
-            className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+            className=" w-5 md:w-10 h-5 md:h-10 bg-white rounded-full flex items-center justify-center"
           >
             <Heart
-              className={`w-5 h-5 ${
+              className={`w-3 md:w-5 h-3 md:h-5 ${
                 liked ? "fill-red-500 text-red-500" : ""
               }`}
             />
@@ -147,9 +147,9 @@ export default function ProductCard({ item }) {
               setShowSize(true);
               setSizeError(true);
             }}
-            className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+            className="w-5 md:w-10 h-5 md:h-10 bg-white rounded-full flex items-center justify-center"
           >
-            <ShoppingCart className="w-5 h-5" />
+            <ShoppingCart className="w-3 md:w-5 h-3 md:h-5" />
           </div>
 
         </div>

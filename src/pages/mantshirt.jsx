@@ -19,16 +19,16 @@ export default function ManTshirt() {
   return (
     <>
       {/* HEADER */}
-      <section className="mx-auto px-10 py-10 bg-[#fff7ed]">
+      <section className="mx-auto p-3 md:p-5 bg-[#fff7ed]">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           <div>
            
 
-            <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-2">
+            <h1 className="text-lg md:text-4xl font-semibold text-gray-900 mb-2">
               Men Collection
             </h1>
 
-            <p className="text-gray-600 max-w-xl">
+            <p className="text-gray-600 max-w-xl text-sm md:text-lg">
               Premium quality Collection designed for everyday comfort and
               style.
             </p>
@@ -37,7 +37,7 @@ export default function ManTshirt() {
       </section>
 
       {/* PRODUCTS */}
-      <section className="mx-auto px-10 py-10 bg-[#fff7ed]">
+      <section className="mx-auto md:p-5 p-3 bg-[#fff7ed]">
         {/* TOP BAR */}
         <FilterBar
           openFilter={filters.openFilter}
@@ -51,7 +51,7 @@ export default function ManTshirt() {
         />
 
         {/* PRODUCT GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-2 gap-y-3">
           {filteredProducts.map((item) => (
             <ProductCard key={item.id} item={item} />
           ))}

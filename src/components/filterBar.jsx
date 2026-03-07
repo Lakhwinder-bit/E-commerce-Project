@@ -72,18 +72,18 @@ export default function FilterBar({
           </div>
 
           <div
-            className={`absolute top-10 left-0 w-[340px] bg-white border rounded-2xl shadow-lg overflow-hidden transition-all duration-300 z-30 ${
+            className={`absolute top-10 left-0 w-[200px] md:w-[340px] bg-white border rounded-2xl shadow-lg overflow-hidden transition-all duration-300 z-30 ${
               openFilter === "size"
-                ? "max-h-80 opacity-100 p-5"
+                ? "md:max-h-80 max-h-30 opacity-100 md:p-5 p-2"
                 : "max-h-0 opacity-0 p-0"
             }`}
           >
-            <div className="flex flex-wrap gap-3 mb-4">
+            <div className="flex flex-wrap gap-3 md:mb-4 mb-0">
               {["XS", "S", "M", "L", "XL", "XXL"].map((size) => (
                 <button
                   key={size}
                   onClick={() => toggleSize(size)}
-                  className={`px-4 py-2 border rounded-xl text-sm transition
+                  className={`md:h-15 md:w-15 h-7 w-7 border rounded-full text-xs md:text-sm transition
                     ${
                       selectedSizes.includes(size)
                         ? "bg-black text-white border-black"

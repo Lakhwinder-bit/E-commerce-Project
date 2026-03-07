@@ -18,18 +18,18 @@ export default function Kides() {
 
   return (
     <>
-    <section className="mx-auto px-10 py-10 bg-[#fff7ed]">
+    <section className="mx-auto md:p-5 p-3 bg-[#fff7ed]">
   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
     {/* LEFT CONTENT */}
     <div>
       
 
-      <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-2">
+      <h1 className="text-lg md:text-4xl font-semibold text-gray-900 mb-2">
        Kids Collection
       </h1>
 
-      <p className="text-gray-600 max-w-xl">
+      <p className="text-gray-600 max-w-xl text-sm md:text-lg">
         Soft, comfortable styles perfect for everyday play.
       </p>
     </div>
@@ -41,7 +41,7 @@ export default function Kides() {
 
 
 
-<section className=" mx-auto px-10 py-10 bg-[#fff7ed]">
+<section className=" mx-auto md:p-5 p-3 bg-[#fff7ed]">
         <FilterBar
             openFilter={filters.openFilter}
             toggleFilter={toggleFilter}
@@ -71,3 +71,11 @@ export default function Kides() {
     </>
   )
 }
+
+
+
+import { Link } from "react-router-dom";
+
+
+
+

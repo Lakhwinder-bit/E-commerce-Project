@@ -134,7 +134,7 @@ function Home() {
       <div className="mx-auto px-4 md:px-10 py-10 md:py-14">
         <div
           ref={containerRef}
-          className="relative rounded-3xl overflow-hidden min-h-[520px] md:min-h-[640px]"
+          className="relative rounded-3xl md:overflow-hidden min-h-[520px] md:min-h-[640px]"
         >
           {/* ================= SWIPER ================= */}
 
@@ -190,7 +190,7 @@ function Home() {
 
           {/* ================= MOBILE ARROWS ================= */}
 
-          <div className="absolute bottom-80 left-1/2 -translate-x-1/2  flex gap-4 justify-between w-full md:hidden z-40">
+          <div className="absolute md:bottom-80 -bottom-10 left-1/2 -translate-x-1/2  flex gap-4 justify-between w-full md:hidden z-40">
             <button
               onClick={() => swiperRef.current?.slidePrev()}
               className="w-12 h-12 rounded-full bg-black/20 text-white flex items-center justify-center shadow-lg"

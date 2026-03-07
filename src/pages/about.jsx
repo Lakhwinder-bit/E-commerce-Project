@@ -15,18 +15,19 @@ export default function  About() {
     } = useProductFilters(Product);
   return (
     <>
-    <section className=" mx-auto px-10 py-10 bg-[#fff7ed]">
+    <div className='overflow-x-hidden'>
+    <section className=" mx-auto md:p-8 p-3  bg-[#fff7ed]">
   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
     {/* LEFT CONTENT */}
     <div>
     
 
-      <h1 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-2">
+      <h1 className="text-lg md:text-4xl font-semibold text-gray-900 mb-2">
          All Collections
       </h1>
 
-      <p className="text-gray-600 max-w-xl">
+      <p className="text-gray-600 max-w-xl text-sm md:text-md">
         Explore our complete range of stylish and comfortable clothing for everyone.
       </p>
     </div>
@@ -38,7 +39,7 @@ export default function  About() {
 
 
 
-<section className=" mx-auto px-10 py-10 bg-[#fff7ed]">
+<section className=" mx-auto md:p-8 p-3  bg-[#fff7ed]">
      <FilterBar
             openFilter={filters.openFilter}
             toggleFilter={toggleFilter}
@@ -53,7 +54,7 @@ export default function  About() {
 
 
   {/* PRODUCT GRID */}
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 md:gap-4 gap-2 gap-y-3">
 
     {/* CARD 1 */}
  {filteredProducts.map((item) => (
@@ -64,7 +65,7 @@ export default function  About() {
 
   </div>
 </section>
-
+</div>
 
     </>
   )
