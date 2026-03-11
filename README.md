@@ -1,56 +1,60 @@
-# Modern Weather Application
+# Urban Thread – React E-Commerce Store
 
-A responsive weather dashboard that provides real-time weather information for any city using a weather API.  
-The application displays temperature, humidity, wind speed, and dynamic weather conditions with smooth UI animations.
-
----
-
-## 🔗 Live Website
-https://e-commerce-project-git-main-lakhwinder-bits-projects.vercel.app/
+Urban Thread is a modern fashion e-commerce web application built with React and Tailwind CSS.  
+The application allows users to browse products, select sizes, add items to cart or wishlist, and place orders through a responsive checkout system.
 
 ---
 
-## 🚀 Features
+## 🚀 Live Demo
+🔗https://e-commerce-project-git-main-lakhwinder-bits-projects.vercel.app/
 
-- Search weather by city name
-- Real-time weather data using API integration
-- Displays temperature, humidity, and wind speed
-- Live time and date display
-- Dynamic weather animations
-- Rain animation when rainy weather is detected
-- Smooth UI transitions and effects
-- Fully responsive design for mobile, tablet, and desktop
-- Recent searched cities feature for quick access
+---
+
+## ✨ Features
+
+- Responsive design for mobile, tablet, and desktop devices
+- Product listing and product detail pages
+- Product size selection before adding to cart
+- Add-to-cart animation (product moves to shopping bag)
+- Wishlist functionality
+- Dynamic cart management using Context API
+- Checkout system with shipping address form
+- Payment method selection (Card / UPI / Cash on Delivery)
+- My Orders page to view order details
+- Order management using LocalStorage
+- Smooth UI animations using GSAP
 
 ---
 
 ## 🛠 Tech Stack
 
-- HTML
-- CSS
+- React.js
+- Tailwind CSS
 - JavaScript
-- Weather API
-- Responsive Design
-
----
-
-## 📸 Screenshots
-
-You can add screenshots here of:
-
-- Weather dashboard
-- City search feature
-- Rain animation UI
-- Mobile responsive layout
+- Context API
+- GSAP Animation
+- LocalStorage
 
 ---
 
 ## 🎯 Key Highlights
 
-- Built an interactive weather dashboard with modern UI
-- Implemented API integration for real-time weather data
-- Designed smooth animations and weather-based visual effects
-- Optimized the layout for cross-device responsiveness
+- Built an interactive e-commerce interface with modern UI/UX design
+- Implemented dynamic cart and wishlist functionality
+- Added animations for product interactions to enhance user experience
+- Optimized layout and performance for cross-device responsiveness
+
+---
+
+## 📸 Screenshots
+
+Add screenshots of the following pages:
+
+- Home Page
+- Product Page
+- Cart Drawer
+- Checkout Page
+- My Orders Page
 
 ---
 
@@ -58,4 +62,5 @@ You can add screenshots here of:
 
 **Lakhwinder Singh**
 
-GitHub: https://github.com/Lakhwinder-bit
+GitHub: https://github.com/Lakhwinder-bit  
+LinkedIn: https://linkedin.com/in/yourprofile
