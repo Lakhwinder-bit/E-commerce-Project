@@ -5,7 +5,8 @@ The application displays temperature, humidity, wind speed, and dynamic weather 
 
 ---
 
-🚀 **Live Demo:**[Click Here]([https://e-commerce-project-git-main-lakhwinder-bits-projects.vercel.app/)
+## 🔗 Live Website
+https://e-commerce-project-git-main-lakhwinder-bits-projects.vercel.app/
 
 ---
 
