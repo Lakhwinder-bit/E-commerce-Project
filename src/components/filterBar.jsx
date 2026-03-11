@@ -98,7 +98,7 @@ export default function FilterBar({
             <div className="flex justify-end">
               <button
                 onClick={clearAllFilters}
-                className="text-sm text-gray-500 hover:text-black"
+                className="text-xs md:text-sm text-white bg-black px-2 py-1 rounded-lg hover:text-black"
               >
                 Clear
               </button>
@@ -109,8 +109,8 @@ export default function FilterBar({
 
       {/* RIGHT SIDE */}
       <div className="flex items-center gap-4">
-        <p className="text-md font-semibold text-black ">
-          {totalProducts} <span className="text-gray-600">products</span>
+        <p className="text-sm md:text-md font-semibold text-black ">
+          {totalProducts} <span className="text-gray-500 ">Products</span>
         </p>
       </div>
     </div>

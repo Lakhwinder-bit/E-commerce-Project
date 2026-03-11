@@ -15,7 +15,7 @@ export default function homePage() {
     <>
     <main className="bg-[#fff7ed]">
       <HomeSlider />
-      <div className=" mx-auto px-5 py-5 md:px-10 md:py-16 mt-10 ">
+      <div className=" mx-auto px-4 py-5 md:px-10 md:py-16 mt-8 md:mt-10 ">
         <div className="flex  justify-between">
           <h1 className="md:text-2xl text-lg  font-semibold">Shop by Category</h1>
           <div className="flex items-center justify-center gap-2 md:text-lg text-xs">
@@ -26,7 +26,7 @@ export default function homePage() {
            </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:gap-8 gap-2 mt-15">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:gap-8 gap-2 mt-10 md:mt-15">
           {homeProducts.map((item) => (
             <ProductCard key={item.id} item={item} />
           ))}
@@ -35,7 +35,7 @@ export default function homePage() {
 
 
 
-      <section className=" mx-auto px-5 py-5 md:px-10 md:py-16">
+      <section className=" mx-auto px-4 py-5 md:px-10 md:py-16">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <h2 className="md:text-2xl text-lg font-bold text-gray-900">Styled By You</h2>
@@ -103,7 +103,7 @@ export default function homePage() {
         </div>
       </section>
 
-      <section className=" mx-auto  px-5 py-5 md:px-10 md:py-16 relative overflow-hidden">
+      <section className=" mx-auto  px-4 py-5 md:px-10 md:py-16 relative overflow-hidden">
         <div className="rounded-2xl overflow-hidden bg-black relative">
           {/* Background */}
           <img
@@ -165,9 +165,9 @@ export default function homePage() {
         </div>
       </section>
 
-      <section className=" mx-auto  px-5 py-5 md:px-10 md:py-16">
+      <section className=" mx-auto  px-4 py-5 md:px-10 md:py-16 mt-10">
         {/* Header */}
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex items-center justify-between md:mb-10 mb-5">
           <h2 className="md:text-2xl text-lg font-bold text-gray-900">The Journal</h2>
           <a href="#" className="text-sm font-medium text-gray-900">
             Read All Stories

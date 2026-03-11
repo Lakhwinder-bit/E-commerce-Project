@@ -543,7 +543,7 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-[#fff7ed] flex items-center justify-center p-4 md:p-6">
       <div className="w-full max-w-7xl bg-white rounded-3xl shadow-md p-3 md:p-10">
-        <h1 className="text-2xl font-semibold mb-6">Shopping Cart</h1>
+        <h1 className="md:text-2xl text-xl font-semibold md:mb-6 mb-4">Shopping Cart</h1>
 
         {/* MAIN LAYOUT */}
         <div className="flex flex-col-reverse lg:flex-row gap-10">

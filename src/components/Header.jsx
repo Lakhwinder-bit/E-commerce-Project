@@ -45,7 +45,7 @@ function Home() {
 
           {/* Logo */}
           <Link to="/" className="text-lg font-bold tracking-wide">
-            URBAN THREAD<span className="font-normal">.</span>
+            URBAN THREAD<span className="font-normal"></span>
           </Link>
 
           {/* DESKTOP NAV */}
@@ -129,7 +129,7 @@ id="wishlist-icon"
 
         {/* Sidebar */}
         <div
-          className={`absolute left-0 top-0 h-full w-[260px] bg-white p-6 shadow-lg transform transition-transform duration-300 ${
+          className={`absolute left-0 top-0 h-full w-[260px] bg-[#f4e5d3] p-6 shadow-lg transform transition-transform duration-300 ${
             openMenu ? "translate-x-0" : "-translate-x-full"
           }`}
         >

@@ -23,11 +23,11 @@ export default function GirlTshirt() {
           <div>
           
 
-            <h1 className="text-lg md:text-4xl font-semibold text-gray-900 mb-2">
+            <h1 className="text-xl md:text-4xl font-semibold text-gray-900 mb-2 mt-5">
               Girls Collection
             </h1>
 
-            <p className="text-gray-600 max-w-xl md:text-ld text-sm">
+            <p className="text-gray-600 max-w-xl text-sm md:text-md">
               Premium quality Collection designed for everyday comfort and
               style.
             </p>

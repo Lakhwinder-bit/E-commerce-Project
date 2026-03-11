@@ -74,7 +74,7 @@ export default function ProductCard({ item }) {
         {/* CONTENT */}
         <div className="p-2">
 
-          <h3 className="font-semibold text-sm md:text-lg capitalize">
+          <h3 className="font-semibold text-sm md:text-lg capitalize text-gray-500">
             {title}
           </h3>
 
@@ -90,7 +90,7 @@ export default function ProductCard({ item }) {
             {size.map((sObj, index) => (
               <div
                 key={index}
-                className={` h-4 md:h-6  w-4 md:w-6 rounded-md flex justify-center items-center text-xs
+                className={` h-5 md:h-6  w-5 md:w-6 rounded-md flex justify-center items-center md:text-xs text-[10px] 
                 ${
                   sObj.available
                     ? "bg-gray-200 text-black"
@@ -114,7 +114,7 @@ export default function ProductCard({ item }) {
                 e.stopPropagation();
                 setSelectedImage(variant.color);
               }}
-              className=" w-2 md:w-3 h-2 md:h-3 rounded-full ring-1"
+              className=" w-3 md:w-3 h-3 md:h-3 rounded-full ring-1"
               style={{ backgroundColor: variant.color }}
             />
           ))}
@@ -130,10 +130,10 @@ export default function ProductCard({ item }) {
               e.stopPropagation();
               toggleWishlist(item.id);
             }}
-            className=" w-5 md:w-10 h-5 md:h-10 bg-white rounded-full flex items-center justify-center"
+            className=" w-8 md:w-10 h-8 md:h-10 bg-white rounded-full flex items-center justify-center"
           >
             <Heart
-              className={`w-3 md:w-5 h-3 md:h-5 ${
+              className={`w-4.5 md:w-5 h-4.5 md:h- ${
                 liked ? "fill-red-500 text-red-500" : ""
               }`}
             />
@@ -147,9 +147,9 @@ export default function ProductCard({ item }) {
               setShowSize(true);
               setSizeError(true);
             }}
-            className="w-5 md:w-10 h-5 md:h-10 bg-white rounded-full flex items-center justify-center"
+            className="w-8 md:w-10 h-8 md:h-10 bg-white rounded-full flex items-center justify-center"
           >
-            <ShoppingCart className="w-3 md:w-5 h-3 md:h-5" />
+            <ShoppingCart className="w-4.5 md:w-5 h-5 md:h-4.5" />
           </div>
 
         </div>

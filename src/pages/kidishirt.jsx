@@ -25,11 +25,11 @@ export default function Kides() {
     <div>
       
 
-      <h1 className="text-lg md:text-4xl font-semibold text-gray-900 mb-2">
+      <h1 className="text-xl md:text-4xl font-semibold text-gray-900 mb-2 mt-5">
        Kids Collection
       </h1>
 
-      <p className="text-gray-600 max-w-xl text-sm md:text-lg">
+      <p className="text-gray-600 max-w-xl text-sm md:text-md">
         Soft, comfortable styles perfect for everyday play.
       </p>
     </div>

@@ -23,7 +23,7 @@ export default function  About() {
     <div>
     
 
-      <h1 className="text-lg md:text-4xl font-semibold text-gray-900 mb-2">
+      <h1 className="text-xl md:text-4xl font-semibold text-gray-900 mb-2 mt-5">
          All Collections
       </h1>
 

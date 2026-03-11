@@ -48,7 +48,7 @@ export default function OrderPage() {
           {/* ORDER DETAILS WITH SMOOTH ANIMATION */}
           <div
             className={`transition-all duration-500 ease-in-out overflow-hidden
-          ${openOrder ? "max-h-[800px] opacity-100 mt-6" : "max-h-0 opacity-0"}
+          ${openOrder ? "max-h-fit opacity-100 mt-6" : "max-h-0 opacity-0"}
           `}
           >
             {/* INFO GRID */}
