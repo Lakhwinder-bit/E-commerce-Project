@@ -110,7 +110,7 @@ export const ProductDetails = () => {
 
               <img
                 src={selectedImage}
-                className={`w-[650px] bg-[#faf3f6] h-[480px] object-contain transition-all duration-500 ${
+                className={`w-[650px] bg-white h-[480px] object-contain transition-all duration-500 ${
                   isFading ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"
                 }`}
               />

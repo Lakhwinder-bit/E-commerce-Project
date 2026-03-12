@@ -9,25 +9,25 @@ const slides = [
   {
     id: 0,
     label: "Women",
-    image: "/images/girl.png",
+    image: "/images/girl.webp",
     bg: "#fff7ef",
   },
   {
     id: 1,
     label: "Men",
-    image: "/images/hero.png",
+    image: "/images/hero.webp",
     bg: "#fff7ef",
   },
   {
     id: 2,
     label: "Kids",
-    image: "/images/kid-bg.png",
+    image: "/images/kid-bg.webp",
     bg: "#fff7ef",
   },
   {
     id: 3,
     label: "Gym",
-    image: "/images/gym.png",
+    image: "/images/gym.webp",
     bg: "#fff7ef",
   },
 ];
