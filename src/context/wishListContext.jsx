@@ -3,8 +3,10 @@ import { createContext, useContext, useState } from "react";
 const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]); // IMPORTANT: default []
 
+  const [wishlist, setWishlist] = useState([]);
+
+  // toggle like
   const toggleWishlist = (id) => {
     setWishlist((prev) =>
       prev.includes(id)
@@ -13,13 +15,24 @@ export const WishlistProvider = ({ children }) => {
     );
   };
 
+  // check if liked
   const isWishlisted = (id) => {
     return wishlist.includes(id);
   };
 
+  // 🔥 clear all wishlist
+  const clearlist = () => {
+    setWishlist([]);
+  };
+
   return (
     <WishlistContext.Provider
-      value={{ wishlist, toggleWishlist, isWishlisted }}
+      value={{
+        wishlist,
+        toggleWishlist,
+        isWishlisted,
+        clearlist
+      }}
     >
       {children}
     </WishlistContext.Provider>

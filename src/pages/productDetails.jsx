@@ -6,6 +6,7 @@ import { useCart } from "../context/cardContext";
 import { animateToWishlist } from "../utils/animateToWishlist";
 import { useWishlist } from "../context/wishListContext";
 
+
 export const ProductDetails = () => {
 
   const { id } = useParams();
@@ -13,6 +14,7 @@ export const ProductDetails = () => {
   const { toggleWishlist, isWishlisted } = useWishlist(); // ✅ FIX
 
   const product = Product.find((item) => item.id === Number(id));
+const [showModal, setShowModal] = useState(false);
 
   if (!product) {
     return <p className="p-10">Product not found</p>;
@@ -64,9 +66,10 @@ export const ProductDetails = () => {
   const handleAddToCart = () => {
 
     if (!selectedSize) {
-      alert("Please select size");
-      return;
+     setShowModal(true); // open modal
+    return;
     }
+
 
     const cartItem = {
       id: product.id,
@@ -81,6 +84,8 @@ export const ProductDetails = () => {
   };
 
   return (
+    <>
+   
     <div className="bg-[#fff7ed]">
          <section className="mx-auto p-3 md:p-5 bg-[#fff7ed]">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
@@ -258,5 +263,31 @@ export const ProductDetails = () => {
       </section>
 
     </div>
+
+    <div
+  className={`fixed inset-0 flex items-center justify-center bg-black/40 z-50 transition-opacity duration-300 ${
+    showModal ? "opacity-100 visible" : "opacity-0 invisible"
+  }`}
+>
+  <div
+    className={`bg-white p-6 rounded-lg w-[320px] text-center transform transition-all duration-300 ${
+      showModal ? "scale-100 translate-y-0" : "scale-90 translate-y-5"
+    }`}
+  >
+    <h2 className="text-lg font-semibold mb-2">Select Size</h2>
+
+    <p className="text-gray-500 mb-4">
+      Please select a size before adding to cart.
+    </p>
+
+    <button
+      onClick={() => setShowModal(false)}
+      className="bg-[#555554] cursor-pointer text-white px-5 py-2 rounded hover:bg-black transition"
+    >
+      OK
+    </button>
+  </div>
+</div>
+     </>
   );
 };

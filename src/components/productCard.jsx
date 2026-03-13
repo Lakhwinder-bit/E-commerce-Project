@@ -1,9 +1,10 @@
 import { Heart, ShoppingCart } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useWishlist } from "../context/wishListContext";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/cardContext";
 import { animateToCart } from "../utils/animationCart";
+import { animateToWishlist } from "../utils/animateToWishlist";
 
 export default function ProductCard({ item }) {
 
@@ -30,6 +31,24 @@ export default function ProductCard({ item }) {
   const { addToCart } = useCart();
 
   const imageRef = useRef();
+  const heartRef = useRef(null);
+  const cardRef = useRef(null);
+
+  // CLOSE SIZE SELECTOR WHEN CLICKING OUTSIDE
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (cardRef.current && !cardRef.current.contains(event.target)) {
+        setShowSize(false);
+        setSizeError(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleAddToCart = (sizeName) => {
 
@@ -53,7 +72,10 @@ export default function ProductCard({ item }) {
   return (
     <Link to={`/product/${item.id}`}>
 
-      <div className="bg-white overflow-hidden shadow relative hover:scale-[1.02] duration-200 cursor-pointer">
+      <div
+        ref={cardRef}
+        className="bg-white overflow-hidden shadow relative hover:scale-[1.02] duration-200 cursor-pointer"
+      >
 
         {/* IMAGE */}
         <div className="relative h-[200px] md:h-[360px]">
@@ -65,7 +87,7 @@ export default function ProductCard({ item }) {
             alt={title}
           />
 
-          <span className="absolute md:top-4  top-2  left-2 md:left-4 bg-[#555554] text-white text-[8px]   px-3 py-1 rounded-full">
+          <span className="absolute md:top-4 top-2 left-2 md:left-4 bg-[#555554] text-white text-[8px] px-3 py-1 rounded-full">
             {discountPrice}% OFF
           </span>
 
@@ -79,8 +101,8 @@ export default function ProductCard({ item }) {
           </h3>
 
           <div className="flex items-center gap-2">
-            <div className="font-bold  text-sm md:text-lg">₹{price}</div>
-            <div className=" text-xs md:text-sm text-gray-400 line-through">
+            <div className="font-bold text-sm md:text-lg">₹{price}</div>
+            <div className="text-xs md:text-sm text-gray-400 line-through">
               ₹{oldPrice}
             </div>
           </div>
@@ -90,7 +112,7 @@ export default function ProductCard({ item }) {
             {size.map((sObj, index) => (
               <div
                 key={index}
-                className={` h-5 md:h-6  w-5 md:w-6 rounded-md flex justify-center items-center md:text-xs text-[10px] 
+                className={`md:h-7 h-4 md:w-7 w-4 rounded-md flex justify-center items-center md:text-xs text-[10px] 
                 ${
                   sObj.available
                     ? "bg-gray-200 text-black"
@@ -105,7 +127,7 @@ export default function ProductCard({ item }) {
         </div>
 
         {/* COLORS */}
-        <div className="flex gap-2 absolute  bottom-22 md:bottom-32 left-3">
+        <div className="flex gap-2 absolute bottom-22 md:bottom-32 left-3">
           {variants.map((variant) => (
             <button
               key={variant.color}
@@ -114,7 +136,7 @@ export default function ProductCard({ item }) {
                 e.stopPropagation();
                 setSelectedImage(variant.color);
               }}
-              className=" w-3 md:w-3 h-3 md:h-3 rounded-full ring-1"
+              className="w-3 md:w-3 h-3 md:h-3 rounded-full ring-1"
               style={{ backgroundColor: variant.color }}
             />
           ))}
@@ -129,11 +151,13 @@ export default function ProductCard({ item }) {
               e.preventDefault();
               e.stopPropagation();
               toggleWishlist(item.id);
+              animateToWishlist(heartRef.current);
             }}
-            className=" w-8 md:w-10 h-8 md:h-10 bg-white rounded-full flex items-center justify-center"
+            className="w-8 md:w-10 h-8 md:h-10 bg-white rounded-full flex items-center justify-center"
           >
             <Heart
-              className={`w-4.5 md:w-5 h-4.5 md:h- ${
+              ref={heartRef}
+              className={`w-4.5 md:w-5 h-4.5 md:h-5 ${
                 liked ? "fill-red-500 text-red-500" : ""
               }`}
             />
@@ -144,7 +168,7 @@ export default function ProductCard({ item }) {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              setShowSize(true);
+              setShowSize((prev) => !prev); // TOGGLE SIZE SELECTOR
               setSizeError(true);
             }}
             className="w-8 md:w-10 h-8 md:h-10 bg-white rounded-full flex items-center justify-center"
@@ -161,7 +185,7 @@ export default function ProductCard({ item }) {
             e.stopPropagation();
           }}
           className={`absolute bottom-0 left-0 w-full
-          bg-white/90 backdrop-blur-lg p-3 shadow-lg
+          bg-gray-200 backdrop-blur-lg p-3 shadow-lg
           transition-all duration-300 ease-in-out
           ${
             showSize
@@ -169,10 +193,6 @@ export default function ProductCard({ item }) {
               : "translate-y-full opacity-0 pointer-events-none"
           }`}
         >
-
-          <p className="text-sm font-medium mb-1">
-            Select Size
-          </p>
 
           {sizeError && (
             <p className="text-red-500 text-xs mb-2">
@@ -191,12 +211,12 @@ export default function ProductCard({ item }) {
                   setSelectedSize(s.name);
                   handleAddToCart(s.name);
                 }}
-                className={`h-7 w-7 rounded-md flex justify-center items-center text-xs
+                className={`md:h-7 h-4 md:w-7 w-4 rounded-md flex justify-center items-center text-[10px]
                 ${
                   selectedSize === s.name
                     ? "bg-black text-white"
                     : s.available
-                    ? "bg-gray-200 hover:bg-black hover:text-white"
+                    ? "bg-white hover:bg-black hover:text-white"
                     : "opacity-40 cursor-not-allowed bg-gray-100 line-through"
                 }`}
               >

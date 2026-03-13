@@ -54,16 +54,24 @@ export default function  About() {
 
 
   {/* PRODUCT GRID */}
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 md:gap-4 gap-2 gap-y-3">
+<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 md:gap-4 gap-2 gap-y-3">
 
-    {/* CARD 1 */}
- {filteredProducts.map((item) => (
-            <ProductCard key={item.id} item={item} />
-          ))}
+  {filteredProducts.length > 0 ? (
+    filteredProducts.map((item) => (
+      <ProductCard key={item.id} item={item} />
+    ))
+  ) : (
+    <div className="col-span-full text-center py-10">
+      <p className="text-gray-600 text-lg font-medium">
+        No products found
+      </p>
+      <p className="text-gray-400 text-sm mt-1">
+        Try changing your filters.
+      </p>
+    </div>
+  )}
 
-    
-
-  </div>
+</div>
 </section>
 </div>
 
