@@ -326,19 +326,25 @@ export default function CheckoutPage() {
       </div>
     </div>
 {orderPlaced && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
-    <div className="bg-white p-6 rounded-2xl text-center">
+  <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50 transition-opacity duration-300">
+    
+    <div className="bg-white p-6 rounded-2xl text-center w-[300px] md:w-[300px] 
+    transform transition-all duration-300 ease-in-out scale-100 animate-[zoomIn_0.4s_ease]">
+
       <video
         autoPlay
         muted
-        className="md:w-40 w-30 mx-auto"
+        playsInline
+        preload="auto"
+        className="md:w-40 w-32 h-auto mx-auto object-contain"
       >
         <source src="/viedo/15547234.mp4" type="video/mp4" />
       </video>
 
-      <h2 className="text-xl font-semibold mt-4">
+      <h2 className="md:text-xl text-lg font-semibold mt-4">
         Order Placed Successfully!
       </h2>
+
     </div>
   </div>
 )}
