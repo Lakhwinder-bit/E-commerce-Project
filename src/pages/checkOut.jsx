@@ -3,7 +3,7 @@ import { useCart } from "../context/cardContext";
 import { CheckCircle } from "lucide-react";
 
 export default function CheckoutPage() {
-  const { cartItems } = useCart();
+  const { cartItems, clearCart } = useCart();
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [orderPlaced, setOrderPlaced] = useState(false);
 
@@ -53,6 +53,18 @@ export default function CheckoutPage() {
     const updatedOrders = [...existingOrders, order];
 
     localStorage.setItem("orders", JSON.stringify(updatedOrders));
+     // ✅ Clear inputs
+  setFormData({
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    country: "",
+    postalCode: "",
+    phone: "",
+  });
+      // ✅ CLEAR CART
+  clearCart();
   // 🔥 SHOW SUCCESS ANIMATION
   setOrderPlaced(true);
 
